@@ -15,7 +15,8 @@ enableRobotsTXT = true
   freeShipping = true
   returnDays = 30
   warrantyYears = 2
-  paypalEmail = ""
+  paypalEmail = "info@nobleparc.com"
+  supportEmail = "support@nobleparc.com"
 
 [markup.goldmark.renderer]
   unsafe = true
