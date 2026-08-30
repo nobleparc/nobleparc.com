@@ -5,6 +5,7 @@ price: "69"
 short_desc: "A premium LED face mask designed for your daily self-care ritual — supports a radiant, revitalized appearance from home."
 image_alt: "Woman wearing Nobleparc red light LED face mask in a comfortable home setting"
 robots: "index, follow"
+slug: "mask"
 paypal_button_id: ""
 shipping_days: "3-7"
 bullets:

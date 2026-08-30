@@ -2,6 +2,7 @@
 title: "About Nobleparc"
 description: "Premium wellness devices for home self-care. We believe looking and feeling your best shouldn't require a clinic appointment."
 robots: "index, follow"
+layout: single
 ---
 
 <section class="page-section container">

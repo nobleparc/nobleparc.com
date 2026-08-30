@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="768" viewBox="0 0 768 768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef3c7"/>
+      <stop offset="50%" style="stop-color:#fed7aa"/>
+      <stop offset="100%" style="stop-color:#fde68a"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c97b5d;stop-opacity:.15"/>
+      <stop offset="100%" style="stop-color:#c97b5d;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  <rect width="768" height="768" fill="url(#bg)"/>
+  <rect width="768" height="768" fill="url(#glow)"/>
+  <!-- Face mask silhouette -->
+  <ellipse cx="384" cy="350" rx="160" ry="180" fill="#fff" opacity=".85"/>
+  <ellipse cx="384" cy="370" rx="120" ry="140" fill="#fef3c7" opacity=".5"/>
+  <!-- LED dots -->
+  <circle cx="320" cy="300" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="340" cy="280" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="360" cy="270" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="380" cy="268" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="400" cy="270" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="420" cy="280" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="440" cy="300" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="310" cy="330" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="330" cy="320" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="350" cy="310" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="370" cy="305" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="390" cy="305" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="410" cy="310" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="430" cy="320" r="6" fill="#c97b5d" opacity=".6"/>
+  <circle cx="450" cy="330" r="6" fill="#c97b5d" opacity=".6"/>
+  <!-- Text -->
+  <text x="384" y="620" text-anchor="middle" fill="#8b5a2b" font-size="24" font-weight="bold" font-family="system-ui">Red Light Therapy</text>
+  <text x="384" y="650" text-anchor="middle" fill="#8b5a2b" font-size="20" font-family="system-ui">Face Mask</text>
+</svg>

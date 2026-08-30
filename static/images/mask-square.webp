@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef3c7"/>
+      <stop offset="50%" style="stop-color:#fed7aa"/>
+      <stop offset="100%" style="stop-color:#fde68a"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="500" fill="url(#bg)"/>
+  <ellipse cx="250" cy="240" rx="105" ry="115" fill="#fff" opacity=".85"/>
+  <circle cx="208" cy="208" r="4" fill="#c97b5d" opacity=".6"/>
+  <circle cx="228" cy="198" r="4" fill="#c97b5d" opacity=".6"/>
+  <circle cx="250" cy="193" r="4" fill="#c97b5d" opacity=".6"/>
+  <circle cx="272" cy="198" r="4" fill="#c97b5d" opacity=".6"/>
+  <circle cx="292" cy="208" r="4" fill="#c97b5d" opacity=".6"/>
+  <circle cx="203" cy="230" r="4" fill="#c97b5d" opacity=".6"/>
+  <circle cx="225" cy="218" r="4" fill="#c97b5d" opacity=".6"/>
+  <circle cx="250" cy="213" r="4" fill="#c97b5d" opacity=".6"/>
+  <circle cx="275" cy="218" r="4" fill="#c97b5d" opacity=".6"/>
+  <circle cx="297" cy="230" r="4" fill="#c97b5d" opacity=".6"/>
+  <text x="250" y="410" text-anchor="middle" fill="#8b5a2b" font-size="16" font-weight="bold" font-family="system-ui">Red Light Mask</text>
+</svg>

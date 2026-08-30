@@ -5,6 +5,7 @@ price: "39"
 short_desc: "A handheld scalp massager designed to help you unwind — gentle yet invigorating vibrations for your daily self-care ritual."
 image_alt: "Person using Nobleparc electric scalp massager in a relaxed home setting"
 robots: "index, follow"
+slug: "massager"
 paypal_button_id: ""
 shipping_days: "3-7"
 bullets:

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="768" viewBox="0 0 768 768">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e0e7ff"/>
+      <stop offset="50%" style="stop-color:#c7d2fe"/>
+      <stop offset="100%" style="stop-color:#ddd6fe"/>
+    </linearGradient>
+  </defs>
+  <rect width="768" height="768" fill="url(#bg)"/>
+  <!-- Scalp massager handle -->
+  <rect x="340" y="280" width="88" height="320" rx="44" fill="#fff" opacity=".85"/>
+  <rect x="340" y="280" width="88" height="200" rx="44" fill="#e0e7ff" opacity=".5"/>
+  <!-- Massage head -->
+  <circle cx="384" cy="300" r="80" fill="#fff" opacity=".8"/>
+  <circle cx="364" cy="280" r="18" fill="#c7d2fe" opacity=".7"/>
+  <circle cx="404" cy="280" r="18" fill="#c7d2fe" opacity=".7"/>
+  <circle cx="364" cy="320" r="18" fill="#c7d2fe" opacity=".7"/>
+  <circle cx="404" cy="320" r="18" fill="#c7d2fe" opacity=".7"/>
+  <!-- Vibration lines -->
+  <path d="M490 250 Q510 240 490 230" fill="none" stroke="#8b5a2b" stroke-width="3" opacity=".3"/>
+  <path d="M510 270 Q530 260 510 250" fill="none" stroke="#8b5a2b" stroke-width="3" opacity=".3"/>
+  <path d="M500 300 Q520 290 500 280" fill="none" stroke="#8b5a2b" stroke-width="3" opacity=".3"/>
+  <text x="384" y="660" text-anchor="middle" fill="#4338ca" font-size="24" font-weight="bold" font-family="system-ui">Electric Scalp Massager</text>
+  <text x="384" y="690" text-anchor="middle" fill="#6366f1" font-size="18" font-family="system-ui">3 Speeds · Shower-safe</text>
+</svg>
