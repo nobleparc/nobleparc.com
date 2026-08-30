@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /confirmation/
+Disallow: /404.html
+
+Sitemap: https://nobleparc.com/sitemap.xml

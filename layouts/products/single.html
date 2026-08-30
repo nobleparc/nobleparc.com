@@ -1,0 +1,153 @@
+{{ define "main" }}
+{{ $product := .Params.product_schema_raw }}
+{{ $faq := .Params.faq_items }}
+<article class="product-page">
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" class="container">
+    <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+        <span itemprop="name">{{ .Title }}</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Hero -->
+  <section class="product-hero container">
+    <div class="product-hero-grid">
+      <div class="product-hero-image">
+        <picture>
+          <source srcset="
+            /images/product-{{ .Params.slug }}-480.webp 480w,
+            /images/product-{{ .Params.slug }}-768.webp 768w,
+            /images/product-{{ .Params.slug }}-1200.webp 1200w"
+            sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 600px"
+            type="image/webp">
+          <img src="/images/product-{{ .Params.slug }}-768.webp"
+               alt="{{ .Params.image_alt }}"
+               width="768" height="768"
+               decoding="async"
+               fetchpriority="high">
+        </picture>
+      </div>
+      <div class="product-hero-info">
+        <h1>{{ .Title }}</h1>
+        <p class="product-price-display">${{ .Params.price }}</p>
+        <p class="product-short-desc">{{ .Params.short_desc }}</p>
+        <ul class="product-bullets">
+          {{ range .Params.bullets }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+        {{ if .Site.Params.paypalEmail }}
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="{{ .Site.Params.paypalEmail }}">
+          <input type="hidden" name="item_name" value="{{ .Title }}">
+          <input type="hidden" name="amount" value="{{ printf "%.2f" (float .Params.price) }}">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="hidden" name="no_shipping" value="2">
+          <input type="hidden" name="return" value="https://nobleparc.com/confirmation/">
+          <input type="hidden" name="cancel_return" value="https://nobleparc.com/">
+          <input type="hidden" name="lc" value="US">
+          <button type="submit" class="buy-button">
+            <span class="buy-button-label">Buy Now</span>
+            <span class="buy-button-price">${{ .Params.price }}</span>
+          </button>
+        </form>
+        {{ else }}
+        <a href="/faq/" class="btn btn-primary">Coming Soon — Join Waitlist</a>
+        {{ end }}
+        <p class="free-shipping-note">✓ Free US Shipping · {{ .Site.Params.returnDays }}-Day Guarantee · Secure via PayPal</p>
+        <p class="shipping-timeframe">Free tracked US shipping — {{ .Params.shipping_days | default "3-7" }} business days.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="benefits-section container">
+    <h2>Key Benefits</h2>
+    <ul class="benefits-list">
+      {{ range .Params.benefits }}
+      <li>{{ . }}</li>
+      {{ end }}
+    </ul>
+  </section>
+
+  <!-- Specs -->
+  <section class="specs-section container">
+    <h2>Technical Specifications</h2>
+    <table class="specs-table">
+      {{ range .Params.specs }}
+      <tr>
+        <th>{{ .label }}</th>
+        <td>{{ .value }}</td>
+      </tr>
+      {{ end }}
+    </table>
+  </section>
+
+  <!-- FAQ -->
+  {{ if $faq }}
+  <section class="faq-section container" itemscope itemtype="https://schema.org/FAQPage">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      {{ range $faq }}
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-question" aria-expanded="false" itemprop="name">
+          {{ .question }}
+        </button>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{{ .answer | safeHTML }}</div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Testimonials (placeholders) -->
+  {{ if .Params.testimonials }}
+  <section class="testimonials-section container">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonials-grid">
+      {{ range .Params.testimonials }}
+      <div class="testimonial-card">
+        <p class="testimonial-text">"{{ .text }}"</p>
+        <p class="testimonial-author">— {{ .author }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+</article>
+
+<!-- Mobile sticky CTA -->
+<div class="mobile-cta" aria-label="Purchase">
+  {{ if .Site.Params.paypalEmail }}
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="{{ .Site.Params.paypalEmail }}">
+    <input type="hidden" name="item_name" value="{{ .Title }}">
+    <input type="hidden" name="amount" value="{{ printf "%.2f" (float .Params.price) }}">
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="hidden" name="no_shipping" value="2">
+    <input type="hidden" name="return" value="https://nobleparc.com/confirmation/">
+    <input type="hidden" name="cancel_return" value="https://nobleparc.com/">
+    <input type="hidden" name="lc" value="US">
+    <button type="submit" class="buy-button">
+      <span>Buy Now — ${{ .Params.price }}</span>
+      <span class="text-sm">Free Shipping · PayPal</span>
+    </button>
+  </form>
+  {{ else }}
+  <a href="/faq/" class="btn btn-primary">
+    <span>Coming Soon</span>
+  </a>
+  {{ end }}
+</div>
+{{ end }}

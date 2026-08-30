@@ -1,0 +1,85 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container hero-content">
+    <h1 class="hero-headline">Look Radiant. Sleep Deeply. Recover Naturally.</h1>
+    <p class="hero-subhead">Premium wellness devices for your home self-care routine — backed by science, designed for real life. Free US shipping.</p>
+    <div class="hero-ctas">
+      <a href="/products/red-light-therapy-mask/" class="btn btn-primary">Shop Red Light Mask</a>
+      <a href="/products/electric-scalp-massager/" class="btn btn-outline">Shop Scalp Massager</a>
+    </div>
+  </div>
+</section>
+
+<section class="featured-section container">
+  <h2 class="section-title">Our Products</h2>
+  <div class="product-grid">
+    {{ $mask := .Site.GetPage "/products/red-light-therapy-mask" }}
+    {{ $massager := .Site.GetPage "/products/electric-scalp-massager" }}
+    {{ with $mask }}
+    <article class="product-card">
+      <a href="{{ .RelPermalink }}" class="product-card-link">
+        <div class="product-card-image">
+          <img src="/images/mask-square.webp" alt="Nobleparc Red Light Therapy Face Mask" width="500" height="500" loading="lazy" decoding="async">
+        </div>
+        <div class="product-card-info">
+          <h3 class="product-card-title">{{ .Title }}</h3>
+          <p class="product-card-price">${{ .Params.price }}</p>
+          <p class="product-card-desc">{{ .Params.short_desc }}</p>
+          <span class="btn btn-primary product-card-cta">Learn More</span>
+        </div>
+      </a>
+    </article>
+    {{ end }}
+    {{ with $massager }}
+    <article class="product-card">
+      <a href="{{ .RelPermalink }}" class="product-card-link">
+        <div class="product-card-image">
+          <img src="/images/massager-square.webp" alt="Nobleparc Electric Scalp Massager" width="500" height="500" loading="lazy" decoding="async">
+        </div>
+        <div class="product-card-info">
+          <h3 class="product-card-title">{{ .Title }}</h3>
+          <p class="product-card-price">${{ .Params.price }}</p>
+          <p class="product-card-desc">{{ .Params.short_desc }}</p>
+          <span class="btn btn-primary product-card-cta">Learn More</span>
+        </div>
+      </a>
+    </article>
+    {{ end }}
+  </div>
+</section>
+
+<section class="usp-section">
+  <div class="container">
+    <h2 class="section-title">Why Nobleparc</h2>
+    <div class="usp-grid">
+      <div class="usp-card">
+        <div class="usp-icon" aria-hidden="true">🇺🇸</div>
+        <h3>Free US Shipping</h3>
+        <p>Every order ships free from our US warehouse. No minimum, no surprises.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon" aria-hidden="true">🔬</div>
+        <h3>Science-Backed Design</h3>
+        <p>Our devices are built with the same technology trusted by wellness professionals.</p>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon" aria-hidden="true">💯</div>
+        <h3>30-Day Peace of Mind</h3>
+        <p>Not loving it? Return it within 30 days for a full refund. No questions asked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-section">
+  <div class="container">
+    <div class="trust-badges">
+      <img src="/images/visa.svg" alt="Visa" height="24" loading="lazy">
+      <img src="/images/mc.svg" alt="Mastercard" height="24" loading="lazy">
+      <img src="/images/amex.svg" alt="American Express" height="24" loading="lazy">
+      <img src="/images/paypal.svg" alt="PayPal" height="24" loading="lazy">
+      <span class="trust-text">Secure checkout via PayPal</span>
+    </div>
+  </div>
+</section>
+{{ end }}

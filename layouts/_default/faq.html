@@ -1,0 +1,23 @@
+{{ define "main" }}
+<article class="page-faq container">
+  <h1>Frequently Asked Questions</h1>
+  
+  {{ range .Params.categories }}
+  <section class="faq-category">
+    <h2>{{ .category }}</h2>
+    <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+      {{ range .questions }}
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-question" aria-expanded="false" itemprop="name">
+          {{ .q }}
+        </button>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div itemprop="text">{{ .a | safeHTML }}</div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+</article>
+{{ end }}

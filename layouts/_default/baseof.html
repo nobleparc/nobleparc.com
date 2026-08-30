@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {{ partial "head/meta.html" . }}
+  {{ partial "head/schema.html" . }}
+  {{ $css := resources.Get "css/style.css" | resources.Minify | resources.Fingerprint }}
+  <link rel="preload" href="{{ $css.RelPermalink }}" as="style" crossorigin>
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="canonical" href="{{ .Permalink }}">
+</head>
+<body>
+  {{ partial "header.html" . }}
+  <main role="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+  {{ $js := resources.Get "js/accordion.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $js.RelPermalink }}" defer crossorigin></script>
+</body>
+</html>

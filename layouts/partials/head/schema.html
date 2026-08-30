@@ -1,0 +1,42 @@
+{{ $org := .Site.Params }}
+{{ $product := .Params.product_schema | default dict }}
+{{ $faqItems := .Params.faq_items | default slice }}
+{{ $breadcrumb := .Params.breadcrumb_schema | default slice }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "{{ $org.orgName }}",
+      "url": "{{ $org.orgURL }}",
+      "logo": "{{ "images/logo.svg" | absURL }}",
+      "description": "{{ $org.description }}",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "{{ $org.contactEmail }}",
+        "availableLanguage": "English"
+      }
+    }{{ with $product }},
+    {{ . | safeJS }}{{ end }}{{ if $faqItems }},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {{- range $i, $item := $faqItems -}}
+        {{ if $i }},{{ end }}
+        {
+          "@type": "Question",
+          "name": {{ $item.question | jsonify }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ $item.answer | jsonify }}
+          }
+        }
+        {{- end -}}
+      ]
+    }{{ end }}{{ range $breadcrumb }},
+    {{ . | safeJS }}{{ end }}
+  ]
+}
+</script>

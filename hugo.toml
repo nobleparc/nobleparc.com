@@ -1,0 +1,29 @@
+baseURL = "https://nobleparc.com"
+title = "Nobleparc"
+languageCode = "en-US"
+# No theme — using /layouts/ directly for zero-dependency builds
+enableRobotsTXT = true
+
+[params]
+  siteName = "Nobleparc"
+  description = "Premium wellness devices for home self-care — red light therapy masks and scalp massagers. Free US shipping."
+  ogImage = "/images/og-default.webp"
+  utmSource = "nobleparc"
+  orgName = "Nobleparc"
+  orgURL = "https://nobleparc.com"
+  contactEmail = "support@nobleparc.com"
+  freeShipping = true
+  returnDays = 30
+  warrantyYears = 2
+  paypalEmail = ""
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[imaging]
+  quality = 85
+  resampleFilter = "Lanczos"
+
+[outputFormats]
+  [outputFormats.RSS]
+    baseName = "feed"

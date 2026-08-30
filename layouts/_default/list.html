@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="page-section container">
+  <h1>Our Products</h1>
+  <div class="product-grid">
+    {{ range .Pages.ByTitle }}
+    <article class="product-card">
+      <a href="{{ .RelPermalink }}" class="product-card-link">
+        <div class="product-card-image">
+          <img src="/images/product-{{ .Params.slug }}-768.webp" alt="{{ .Params.image_alt }}" width="500" height="500" loading="lazy" decoding="async">
+        </div>
+        <div class="product-card-info">
+          <h2 class="product-card-title">{{ .Title }}</h2>
+          <p class="product-card-price">${{ .Params.price }}</p>
+          <p class="product-card-desc">{{ .Params.short_desc }}</p>
+          <span class="btn btn-primary product-card-cta">View Details</span>
+        </div>
+      </a>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
