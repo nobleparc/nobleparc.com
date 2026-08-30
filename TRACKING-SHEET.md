@@ -1,114 +1,65 @@
-# Nobleparc — Order Tracking Sheet (Google Sheets)
+# Nobleparc — Orders Control Sheet
 
-**Zero cost. Controllo umano obbligatorio. Mainland USA only.**
+**Nome foglio:** `Nobleparc – Orders Control`  
+**Link:** `https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit`
 
----
+## Colonne (identiche alla specifica — nessuna rimossa)
 
-## Setup
+| Col | Nome | Tipo | Esempio |
+|-----|------|------|---------|
+| A | Order ID | Testo | NP-20260901-001 |
+| B | Date | Testo (YYYY-MM-DD HH:MM) | 2026-09-01 14:23 |
+| C | PayPal Transaction ID | Testo | 9PA12345ABCD67890 |
+| D | Customer Name | Testo | Jessica Thompson |
+| E | Email | Testo | jessica@example.com |
+| F | Phone | Testo | +1 555 123 4567 |
+| G | Address Line 1 | Testo | 742 Evergreen Terrace |
+| H | Address Line 2 | Testo (opzionale) | Apt 4B |
+| I | City | Testo | Portland |
+| J | State | Testo (2 lettere) | OR |
+| K | ZIP | Testo (5-9 digit) | 97201 |
+| L | Mainland Check | `OK` / `BLOCKED` | OK |
+| M | Product | Testo | Red Light Mask |
+| N | Selling Price | Numero (USD) | 69.00 |
+| O | PayPal Fee | Formula (2.99%+$0.49) | =N2*0.0299+0.49 |
+| P | Product Cost | Numero (USD) | 15.00 |
+| Q | Shipping Cost | Numero (USD) | 0.00 |
+| R | Total Cost | Formula | =P2+Q2 |
+| S | Margin | Formula | =N2-O2-R2 |
+| T | Status | Dropdown | Bozza |
+| U | Human Validation | Dropdown | Pending |
+| V | Validated By | Testo | (operatore) |
+| W | Validation Date | Data | 2026-09-01 |
+| X | CJ Order ID | Testo | CJ-98765 |
+| Y | Tracking Number | Testo | 1Z999AA10123456784 |
+| Z | Carrier | Testo | USPS / UPS / FedEx |
+| AA | Blind Note Added | `Yes` / `No` | Yes |
+| AB | Traffic Source | Dropdown | Reddit |
+| AC | Notes | Testo | Cliente ha chiesto... |
+| AD | Last Update | Formula | =IF(B2<>"",NOW(),"") |
 
-1. Vai su https://sheets.new
-2. Crea due tab: `Orders` e `Finance`
-3. Copia la riga intestazione qui sotto nel tab **Orders**
-4. Apri **Extensions → Apps Script**, incolla il codice da `cloudflare-worker/AppsScript.gs`
-5. Deploy → Web App → Execute as: Me → Who has access: **Anyone**
-6. Copia l'URL Web App → incollalo in `cloudflare-worker/index.js` come `SHEET_SCRIPT_URL`
-7. Deploy il Worker: `npx wrangler deploy`
+## Dropdown Validation (da impostare)
 
-## Orders Sheet — Intestazione Colonne (fila 1)
+| Colonna | Valori |
+|---------|--------|
+| L (Mainland Check) | OK, BLOCKED |
+| T (Status) | Bozza, Validato, Ordinato su CJ, Spedito, Consegnato, Rimborsato, Problema |
+| U (Human Validation) | Pending, Approved, Rejected |
+| AA (Blind Note Added) | Yes, No |
+| AB (Traffic Source) | Reddit, Pinterest, Google, Direct, Other |
 
-| A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Timestamp | Date | Customer Name | Customer Email | Phone | Product | Price | Currency | PayPal TXN | Shipping Address | State | Country | Mainland USA | Status | CJ Order # | Tracking # | Customer Notified | Blind Shipping Note | Notes |
+## Come crearlo in 5 minuti
 
-## Finance Sheet — Intestazione Colonne (fila 1)
-
-| A | B | C | D | E | F | G | H | I | J |
-|---|---|---|---|---|---|---|---|---|---|
-| Date | PayPal TXN | Product | Gross ($) | PayPal Fee ($) | Net ($) | CJ Cost ($) | Net After CJ ($) | Customer Email | State |
-
-## Status Legend
-
-| Status | Significato | Azione Richiesta |
-|---|---|---|
-| 🟡 Payment received — pending review | PayPal ha notificato, ordine in attesa | **Validare indirizzo + mainland USA** |
-| 🟢 Address verified — sent to CJ | Indirizzo OK, ordine inviato a CJ | Inserire CJ Order # in colonna O |
-| 🔵 Tracking received — customer notified | CJ ha fornito tracking | **Inviare tracking al cliente**, colonna Q → YES |
-| ⚪ Delivered | Consegna completata | Archiviare dopo 14 giorni |
-| 🔴 Refund issued | Rimborso erogato | Note: motivo del rimborso |
-
-## Operational Flow (obbligatorio — ogni ordine)
-
-```
-1. PayPal IPN → Cloudflare Worker → Google Sheet (riga 🟡 automatica)
-   ↓
-2. CONTROLLO UMANO (obbligatorio — non negoziabile):
-   ✅ Indirizzo in mainland USA (Stato non in HI, AK, PR, GU, VI, AS, MP)
-   ✅ Nome cliente valido, non generico
-   ✅ Prodotto disponibile presso CJ Dropshipping
-   ↓
-3. Se NON mainland USA: contatta CEO per decisione (rimborso o eccezione)
-   ↓
-4. Se ✅ mainland USA: invia ordine a CJ Dropshipping
-   ↓
-5. BLIND SHIPPING NOTE — copia questa nota in ogni ordine CJ:
-   "No invoice, no promotional material, no Chinese writing. 
-    Neutral packaging only. Do not include any supplier branding or documents."
-   ↓
-6. Inserisci CJ Order # in colonna O → status 🟢
-   ↓
-7. Quando CJ fornisce tracking → colonna P → status 🔵
-   ↓
-8. INVIA EMAIL AL CLIENTE con tracking number
-   ↓
-9. Colonna Q → YES → status 🔵
-   ↓
-10. Dopo 14 giorni dalla consegna → status ⚪
-```
-
-## Blind Dropshipping Note (TESTUALE — da copiare in ogni ordine)
-
-```
-⚠️ BLIND SHIPPING REQUIREMENT — CRITICAL:
-- No invoice, no receipt, no price tag inside the package
-- No promotional material, no flyers, no coupons
-- No Chinese writing or supplier branding anywhere on the package or contents
-- Neutral unbranded packaging only
-- Return address must be generic or US-based if possible
-- Any violation will result in immediate cancellation of future orders
-```
-
-## Data Validation (da impostare su colonna N)
-
-```
-🟡 Payment received — pending review
-🟢 Address verified — sent to CJ
-🔵 Tracking received — customer notified
-⚪ Delivered
-🔴 Refund issued
-```
-
-## Margini Automatici (Finance Sheet)
-
-Il Google Apps Script calcola automaticamente:
-
-```
-PayPal Fee   = Gross × 0.0299 + 0.49
-Net          = Gross - PayPal Fee
-CJ Cost      = (da inserire manualmente dopo l'ordine)
-Net After CJ = Net - CJ Cost
-```
-
-**Esempio:**
-```
-Mask:     $69.00 - $2.55 (fee) = $66.94 - $15 (CJ) = $51.94 net (75% margin)
-Massager: $39.00 - $1.66 (fee) = $37.34 - $8 (CJ)  = $29.34 net (75% margin)
-```
-
-## URL Template
-
-```
-Orders:  https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit#gid=0
-Finance: https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit#gid=1
-```
-
-Replace `YOUR_SHEET_ID` with the actual ID from your Google Sheet URL.
+1. **https://sheets.new** → rinomina in `Nobleparc – Orders Control`
+2. Copia la riga intestazione in **fila 1** (A–AD)
+3. Congela fila 1: **View → Freeze → 1 row**
+4. Imposta le formule:
+   - O2: `=N2*0.0299+0.49`
+   - R2: `=P2+Q2`
+   - S2: `=N2-O2-R2`
+   - AD2: `=IF(B2<>"",NOW(),"")`
+   — Poi seleziona O2:R2, tira giù per tutta la colonna
+5. Imposta i dropdown: seleziona colonna → **Data → Data validation → List of items → (inserisci valori separati da virgola)**
+6. **Format → Conditional formatting** per colonna S:
+   - Se S>0 → sfondo verde
+   - Se S<0 → sfondo rosso
