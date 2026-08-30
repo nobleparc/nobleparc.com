@@ -2,8 +2,14 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <h4 class="footer-heading">Nobleparc</h4>
-        <p class="text-sm">Premium wellness devices for home self-care. Free US shipping on every order.</p>
+        <h4 class="footer-heading">Noble<span>parc</span></h4>
+        <p style="font-size:14px;line-height:1.7;margin-bottom:var(--md);max-width:280px;">Premium wellness devices for your home self-care routine. Designed for daily use, backed by a satisfaction guarantee.</p>
+        <div class="footer-payments">
+          <svg viewBox="0 0 50 30" width="50" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="30" rx="3" fill="#1a1f71"/><text x="25" y="19" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="Arial">Visa</text></svg>
+          <svg viewBox="0 0 50 30" width="50" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="30" rx="3" fill="#f79e1b"/><circle cx="20" cy="15" r="8" fill="#eb001b"/><circle cx="30" cy="15" r="8" fill="#f79e1b" opacity=".8"/></svg>
+          <svg viewBox="0 0 50 30" width="50" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="30" rx="3" fill="#016fd0"/><text x="25" y="19" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="Arial">AE</text></svg>
+          <svg viewBox="0 0 50 30" width="50" height="30" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="30" rx="3" fill="#fff" stroke="#d1d5db"/><text x="25" y="19" text-anchor="middle" fill="#003087" font-size="10" font-weight="bold" font-family="Arial">PayPal</text></svg>
+        </div>
       </div>
       <div class="footer-col">
         <h4 class="footer-heading">Products</h4>
@@ -18,7 +24,7 @@
           <li><a href="/faq/">FAQ</a></li>
           <li><a href="/shipping-returns/">Shipping &amp; Returns</a></li>
           <li><a href="/about/">About Us</a></li>
-          <li><a href="mailto:support@nobleparc.com">support@nobleparc.com</a></li>
+          <li><a href="mailto:{{ .Site.Params.supportEmail | default "support@nobleparc.com" }}">{{ .Site.Params.supportEmail | default "support@nobleparc.com" }}</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -26,15 +32,18 @@
         <ul class="footer-list">
           <li><a href="/privacy/">Privacy Policy</a></li>
           <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/shipping-returns/">Shipping &amp; Returns</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <p class="text-sm">&copy; {{ now.Format "2006" }} Nobleparc. All rights reserved.</p>
-      <p class="footer-disclaimer text-sm">
+      <p class="footer-disclaimer">
         <strong>FDA Disclaimer:</strong> These products are not intended to diagnose, treat, cure, or prevent any disease. 
         The information on this website is for informational purposes only and does not constitute medical advice. 
-        Always consult a qualified healthcare professional regarding any health concerns.</p>
+        Statements regarding wellness devices have not been evaluated by the Food and Drug Administration. 
+        Always consult a qualified healthcare professional regarding any health concerns.
+      </p>
     </div>
   </div>
 </footer>

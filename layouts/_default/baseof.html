@@ -6,8 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   {{ partial "head/meta.html" . }}
   {{ partial "head/schema.html" . }}
+  <!-- Preload Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" crossorigin>
   {{ $css := resources.Get "css/style.css" | resources.Minify | resources.Fingerprint }}
   <link rel="preload" href="{{ $css.RelPermalink }}" as="style" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" crossorigin>
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
   <link rel="canonical" href="{{ .Permalink }}">
