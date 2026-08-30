@@ -52,11 +52,13 @@ categories:
       - q: "How long does shipping take?"
         a: "We process orders within 1-2 business days. US delivery typically takes 3-7 business days via standard shipping. All orders ship free."
       - q: "Do you ship outside the US?"
-        a: "Currently, we ship exclusively within the United States. International shipping may be available in the future — sign up for our newsletter to stay updated."
+        a: "Currently, we ship exclusively within the continental United States (48 states). We are unable to ship to Hawaii, Alaska, Puerto Rico, or other US territories at this time."
       - q: "What is your return policy?"
         a: "We offer a 30-day satisfaction guarantee. If you're not happy with your purchase for any reason, return it within 30 days of delivery for a full refund. No questions asked."
       - q: "How do I start a return?"
         a: "Email us at support@nobleparc.com with your order number and reason for return. We'll provide a prepaid return label and instructions. Once we receive the item, we'll process your refund within 3-5 business days."
+      - q: "How will my order be packaged?"
+        a: "All orders ship in discreet, neutral packaging with no branding, logos, or product descriptions visible from the outside. No invoices or promotional materials are included. Your privacy is important to us."
 
   - category: "Legal & Disclaimer"
     questions:

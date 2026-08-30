@@ -2,6 +2,7 @@
 title: "Terms of Service"
 description: "Nobleparc terms of service — conditions governing the use of our website and purchase of our products."
 robots: "index, follow"
+layout: single
 ---
 
 <section class="page-section container">

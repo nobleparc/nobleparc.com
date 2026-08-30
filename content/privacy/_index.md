@@ -2,6 +2,7 @@
 title: "Privacy Policy"
 description: "Nobleparc privacy policy — how we collect, use, and protect your personal information."
 robots: "index, follow"
+layout: single
 ---
 
 <section class="page-section container">

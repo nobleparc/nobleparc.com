@@ -2,6 +2,7 @@
 title: "Order Confirmation"
 description: "Thank you for your order!"
 robots: "noindex, nofollow"
+layout: single
 ---
 
 <div class="confirmation-page container">
@@ -16,8 +17,11 @@ robots: "noindex, nofollow"
         <li>You'll receive an order confirmation email within 5 minutes.</li>
         <li>We'll prepare your order and ship within 1-2 business days.</li>
         <li>You'll get a tracking number via email once shipped.</li>
-        <li>Free US shipping — delivery in 3-7 business days.</li>
+        <li>Free US shipping — delivery in 3-7 business days to mainland US addresses.</li>
       </ol>
+      <p style="margin-top:var(--md);font-size:14px;color:var(--gray-500);">
+        Your order will arrive in discreet, neutral packaging.
+      </p>
     </div>
 
     <div class="confirmation-support">
