@@ -1,159 +1,126 @@
 # Nobleparc — Customer Care Templates
 
 **Lingua:** American English  
-**Tono:** Empatico, professionale, trasparente  
-**Tempo di risposta target:** < 24 ore
+**Tono:** Premium, empatico, professionale  
+**Tempo di risposta target:** < 24 ore (ordinario) / < 4 ore (problemi)
 
 ---
 
-## 2a — Order Confirmation
+## 1. Order Confirmation
 
 **Trigger:** PayPal payment completed, order validated by human
 
 ```email
-Subject: Your Nobleparc Order Is Confirmed — #NP-2026XXXXX
+Subject: Your Nobleparc order has been received – #[Order ID]
 
 Hi [Customer Name],
 
-Thank you for your order.
+Thank you for your order. We're pleased to confirm that we have received your payment and your Nobleparc [Product Name] is now being prepared.
 
-Here's a quick summary:
+Order details:
+- Order ID: #[Order ID]
+- Product: [Product Name]
+- Total paid: $[Amount]
 
-  Product:     [Product Name]
-  Amount:      $[Selling Price]
-  Order ID:    NP-2026XXXXX
-  Ships to:    [Address Line 1], [City], [State] [ZIP]
-  Delivery:    3–7 business days within the continental US
+You will receive a second email with tracking information as soon as your package ships.
+We appreciate your trust in Nobleparc and look forward to being part of your at-home self-care routine.
 
-You'll receive a separate email with your tracking number as soon as your order is on its way.
-
-If you have any questions before then, simply reply to this email. I'm here to help.
-
-Best regards,
-Nobleparc Support
+Warm regards,
+The Nobleparc Team
 support@nobleparc.com
 ```
 
 ---
 
-## 2b — Shipping Delay
+## 2. Shipping Delay / Status Update
 
-**Trigger:** Carrier tracking shows no movement after 7+ business days, or CJ notifies supply delay
+**Trigger:** Carrier tracking shows no movement, or CJ notifies supply delay
 
 ```email
-Subject: Update on Your Nobleparc Order — #NP-2026XXXXX
+Subject: Update on your Nobleparc order #[Order ID]
 
 Hi [Customer Name],
 
-I wanted to give you a quick update on your order.
+We wanted to give you a quick update on your order.
 
-Your package is currently experiencing a delay with the carrier. Your tracking number is [Tracking Number], and here's the latest status:
+Your package is currently being processed and will be on its way to you shortly. We are monitoring the shipment closely to make sure everything goes smoothly.
 
-  [Current carrier status]
+As soon as the tracking number becomes available, we will send it to you immediately.
+Thank you for your patience.
 
-I've checked and the package is still moving through the system. Most delays resolve within 2-3 business days. If it doesn't update by [Date + 3 days], please reply to this email and I'll make sure we take care of it.
-
-I'm sorry for the inconvenience and appreciate your patience.
-
-Best regards,
-Nobleparc Support
+Warm regards,
+Customer Operations | Nobleparc
 support@nobleparc.com
 ```
 
 ---
 
-## 2c — Product Damaged / Defective
+## 3. Damaged or Defective Product
 
 **Trigger:** Customer reports broken, non-functional, or visibly damaged item
 
 ```email
-Subject: Your Nobleparc Order — Let's Make This Right (#NP-2026XXXXX)
+Subject: We're sorry about the issue with your order #[Order ID]
 
 Hi [Customer Name],
 
-I'm sorry to hear that your [Product Name] arrived damaged. That's not the experience we want you to have, and I'm going to make it right.
+We're truly sorry to hear that your Nobleparc [Product Name] arrived damaged or is not working as expected.
 
-Here's what I've done:
+Your satisfaction matters to us. Please reply to this email with a brief description of the issue and, if possible, a photo.
 
-  A full refund of $[Selling Price] has been issued to your original payment method. You should see it reflected within 3-5 business days.
+In the meantime, we are already preparing a fast resolution for you (replacement or refund). You will not be left waiting.
 
-You don't need to return the item. Please keep it or dispose of it responsibly.
+Thank you for bringing this to our attention.
 
-If you'd like a replacement instead of a refund, just reply to this email and I'll send one out at no additional cost.
-
-Again, I'm sorry this happened. We're here to make sure you're happy with your purchase.
-
-Best regards,
-Nobleparc Support
+Warm regards,
+Customer Care | Nobleparc
 support@nobleparc.com
 ```
 
 ---
 
-## 2d — Refund / Return Request
+## 4. Return / 30-Day Money-Back Guarantee (Smart Resolution)
 
 **Trigger:** Customer asks for refund or return (any reason — 30-day guarantee applies)
 
-### Variant A — Customer is polite, product is used or opened
+```email
+Subject: Regarding your Nobleparc order #[Order ID] – Resolution
+
+Hi [Customer Name],
+
+We're sorry that your experience with your Nobleparc device wasn't what you hoped for.
+
+Under our 30-Day Money-Back Guarantee, we want to make this right quickly and easily for you.
+
+We have processed a [full / partial] refund of $[Amount] back to your original payment method.
+You do **not** need to return the item.
+
+Thank you for giving Nobleparc a try. We hope to have the chance to serve you better in the future.
+
+Warm regards,
+Customer Care | Nobleparc
+support@nobleparc.com
+```
+
+---
+
+## 5. Pre-Purchase Inquiry (Clean version)
+
+**Trigger:** Customer asks a question before buying
 
 ```email
-Subject: Your Nobleparc Refund Has Been Processed — #NP-2026XXXXX
+Subject: Re: Your question about Nobleparc
 
 Hi [Customer Name],
 
 Thank you for reaching out.
 
-We stand behind our products, so I've processed a full refund of $[Selling Price] to your original payment method. It should appear within 3-5 business days.
+Our devices are designed to fit naturally into a daily at-home self-care routine, with a focus on simplicity, comfort, and a calm wellness experience.
 
-You do not need to return the item. Please keep it or donate it if you'd like.
+If you have any specific questions about the product, materials, or how it fits into a routine, just let us know — we're happy to help.
 
-I hope we can serve you better next time. If there's anything else I can help with, just reply.
-
-Best regards,
-Nobleparc Support
-support@nobleparc.com
-```
-
-### Variant B — Customer is dissatisfied, product is in good condition (customer wants to return)
-
-```email
-Subject: Your Nobleparc Return — Here's What to Expect (#NP-2026XXXXX)
-
-Hi [Customer Name],
-
-Thank you for contacting us. I'm sorry to hear the [Product Name] didn't meet your expectations.
-
-Since you'd like to return it, here's how it works:
-
-1. Reply to this email with your order number to confirm.
-2. You'll receive a prepaid return shipping label within 24 hours.
-3. Drop the package at any [USPS / UPS] location.
-4. Once we receive it, we'll process your refund within 3-5 business days.
-
-Alternatively, if you'd prefer a faster resolution, I can process a refund now and you can keep the item — no need to send it back. Just let me know.
-
-Whichever option you prefer, I'm here to help.
-
-Best regards,
-Nobleparc Support
-support@nobleparc.com
-```
-
-### Variant C — Customer is aggressive or threatens chargeback
-
-```email
-Subject: Your Nobleparc Order — Refund Issued (#NP-2026XXXXX)
-
-Hi [Customer Name],
-
-I understand you're unhappy with your purchase. I've processed a full refund of $[Selling Price] to your original payment method. It should appear within 3-5 business days.
-
-You do not need to return the item.
-
-If you have any questions, please reply to this email. I'm here to help.
-
-Best regards,
-Nobleparc Support
+Warm regards,
+The Nobleparc Team
 support@nobleparc.com
 ```
 
@@ -161,7 +128,7 @@ support@nobleparc.com
 
 ## Template — Blind Shipping Note (per ordini CJ — non per il cliente)
 
-Copia questo testo nel campo note dell'ordine CJ Dropshipping, **OBLIGATORIO** per ogni ordine:
+Copia **obbligatoriamente** in ogni ordine CJ Dropshipping:
 
 ```
 ⚠️ BLIND SHIPPING — CRITICAL INSTRUCTIONS:
@@ -176,7 +143,7 @@ Copia questo testo nel campo note dell'ordine CJ Dropshipping, **OBLIGATORIO** p
 FAILURE TO COMPLY WILL RESULT IN IMMEDIATE CANCELLATION OF ALL FUTURE ORDERS.
 ```
 
-## Template — Traffic Source Question (da inviare 3 giorni dopo la consegna)
+## Template — Traffic Source Question (post-consegna)
 
 ```email
 Subject: Quick question about your Nobleparc order
@@ -192,6 +159,6 @@ Where did you first hear about Nobleparc? (Reddit / Pinterest / Google / Friend 
 Thanks so much — it really helps us out.
 
 Best regards,
-Nobleparc Support
+The Nobleparc Team
 support@nobleparc.com
 ```

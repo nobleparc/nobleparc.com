@@ -1,20 +1,47 @@
 # Nobleparc — Finance & Intelligence Agent: Tracciamento Operativo
 
-## Come funziona nella pratica (non teoria)
-
-### Ogni ordine genera automaticamente:
+## Formula Margine (UFFICIALE — invariabile)
 
 ```
-Colonna N (Selling Price):  $69.00  ← lo scrive il Worker da PayPal
-Colonna O (PayPal Fee):      $2.55  ← =N2*0.0299+0.49 (formula)
-Colonna P (Product Cost):    $15.00 ← lo inserisce l'operatore quando ordina da CJ
-Colonna Q (Shipping Cost):   $0.00  ← lo inserisce l'operatore
-Colonna R (Total Cost):      $15.00 ← =P2+Q2 (formula)
-Colonna S (Margin):          $51.45 ← =N2-O2-R2 (formula)
+Margin = Total Paid (N) – PayPal Fee (O) – Supplier Cost (P) – Shipping Cost (Q)
+
+Colonna S = N - O - (P + Q)
 ```
 
-**L'operatore** inserisce solo P e Q (CJ cost + shipping) dopo aver ordinato da CJ.  
-Tutto il resto è automatico o dropdown.
+**Regole:**
+- **PayPal Fee (O):** 2.99% + $0.49 per transazione — formula `=N*0.0299+0.49`
+- **Product Cost (P):** costo del prodotto da CJ Dropshipping, inserito manualmente dall'operatore
+- **Shipping Cost (Q):** costo di spedizione da CJ, **mai dato per scontato**. Verificare su CJ Dropshipping per ogni ordine. Non è sempre incluso nel wholesale price.
+- **Total Cost (R):** `=P+Q`
+- **Margin (S):** `=N-O-R`
+
+**Esempio con verifica shipping reale:**
+```
+Mask:
+  Selling Price:    $69.00
+  PayPal Fee:       -$2.55
+  Product Cost:     -$15.00
+  Shipping Cost:    -$0.00  (se incluso in CJ)
+  Margin:           $51.45  (74.6%)
+
+  Se shipping non incluso:    $69 - $2.55 - $15.00 - $4.50 = $46.95 (68.0%)
+```
+
+---
+
+## Ogni ordine genera automaticamente
+
+| Colonna | Dato | Come |
+|---------|------|------|
+| N | Selling Price | Scritto dal Worker da PayPal |
+| O | PayPal Fee | Formula automatica `=N*0.0299+0.49` |
+| P | Product Cost | Inserito da operatore dopo ordine CJ |
+| Q | Shipping Cost | Inserito da operatore (verificato su CJ) |
+| R | Total Cost | Formula `=P+Q` |
+| S | Margin | Formula `=N-O-R` |
+
+L'operatore inserisce **solo** P e Q (Product Cost + Shipping Cost).  
+Tutto il resto è automatico.
 
 ---
 
@@ -73,22 +100,10 @@ Nobleparc — Weekly Snapshot (Week N)
 | Gross revenue | Colonna N | Somma della settimana |
 | PayPal fees | Colonna O | Formula automatica, somma |
 | CJ costs | Colonna P | Inserito da operatore, somma |
-| Buffer running total | Foglio Finance separato | Somma Net di tutte le settimane |
+| Shipping costs | Colonna Q | Inserito da operatore, somma |
+| Buffer running total | Somma colonna S di tutte le settimane | Accumulato |
 | Traffic sources | Colonna AB | Filtro per valore |
 | Open tickets | Email support@nobleparc.com | Contare email non archiviate |
-
----
-
-## Foglio Finance (secondo tab nello stesso Sheet)
-
-Oltre al tab `Nobleparc – Orders Control`, esiste un tab **Finance** con:
-
-| A | B | C | D | E | F | G | H |
-|---|---|---|---|---|---|---|---|
-| Week | Orders | Gross Revenue | PayPal Fees | CJ Costs | Net Revenue | Net Margin % | Buffer Running Total |
-
-Questo tab viene aggiornato **ogni 7 giorni** dall'Agente 6 con i dati aggregati.  
-Una riga per settimana. Alla fine del mese, 4 righe.
 
 ---
 
@@ -100,6 +115,7 @@ Una riga per settimana. Alla fine del mese, 4 righe.
 | Refund rate > 5% | Revisione della qualità prodotto o del fornitore. |
 | Chargeback rate > 1% | Attivare escalation: rimborsare proattivamente tutti i clienti insoddisfatti. |
 | Net margin < 35% | Rivedere CJ cost o prezzo di vendita. |
+| Shipping cost non verificato | Bloccare l'ordine fino a verifica su CJ. |
 | Una fonte di traffico > 60% per 3 settimane | Diversificare: attivare il canale successivo della sequenza. |
 | Pinterest < 10% dopo 4 settimane | Rivalutare qualità visiva delle immagini. |
 
