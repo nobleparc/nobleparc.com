@@ -1,99 +1,124 @@
-// Nobleparc — PayPal IPN Webhook
-// Deploy: npx wrangler deploy index.js --name nobleparc-ipn
-// PayPal IPN URL: https://nobleparc-ipn.YOUR-SUBDOMAIN.workers.dev
+// Nobleparc — PayPal IPN Webhook (SECURE version)
+// Paste this into: Cloudflare Dashboard → Workers & Pages → nobleparc-ipn → Edit code
+// Handles BOTH application/json AND application/x-www-form-urlencoded (PayPal IPN standard)
 
-const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
+const SHEET_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE' // ← YOUR Web App URL (https://script.google.com/macros/s/.../exec)
 const PAYPAL_BUSINESS_EMAIL = 'info@nobleparc.com'
 const INVALID_STATES = ['HI', 'AK', 'PR', 'GU', 'VI', 'AS', 'MP']
 const ALLOWED_COUNTRY = 'US'
 
 let orderCounter = 0
 
-function generateOrderID(dateStr) {
-  const date = dateStr || new Date().toISOString().split('T')[0].replace(/-/g, '')
+function generateOrderID() {
+  const now = new Date()
+  const date = now.toISOString().split('T')[0].replace(/-/g, '')
   orderCounter++
   const seq = String(orderCounter).padStart(3, '0')
   return `NP-${date}-${seq}`
 }
 
+function formatDateTime(d) {
+  const pad = (n) => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`
+}
+
+async function parsePayload(request) {
+  const contentType = request.headers.get('Content-Type') || ''
+  if (contentType.includes('application/json')) {
+    return await request.json()
+  }
+  // Default: form-urlencoded (PayPal IPN standard)
+  const formData = await request.formData()
+  const obj = {}
+  for (const [key, value] of formData.entries()) {
+    obj[key] = value
+  }
+  return obj
+}
+
 export default {
   async fetch(request) {
+    // Only accept POST (PayPal IPN sends POST)
     if (request.method !== 'POST') {
       return new Response('OK', { status: 200 })
     }
 
     try {
-      const formData = await request.formData()
-      const paymentStatus = formData.get('payment_status')
-      const receiverEmail = formData.get('receiver_email')
+      const p = await parsePayload(request)
 
-      if (paymentStatus !== 'Completed') return new Response('OK', { status: 200 })
-      if (receiverEmail !== PAYPAL_BUSINESS_EMAIL) return new Response('OK', { status: 200 })
+      // === SECURITY CHECK 1: Payment must be Completed ===
+      if (p.payment_status !== 'Completed') {
+        console.log(`IPN ignored: status=${p.payment_status} (not Completed)`)
+        return new Response('OK', { status: 200 }) // silently drop, NO sheet write
+      }
 
-      const firstName = formData.get('first_name') || ''
-      const lastName = formData.get('last_name') || ''
-      const payerEmail = formData.get('payer_email') || ''
-      const itemName = formData.get('item_name') || ''
-      const gross = formData.get('mc_gross') || '0'
-      const txnId = formData.get('txn_id') || ''
-      const street = formData.get('address_street') || ''
-      const street2 = formData.get('address_street2') || ''
-      const city = formData.get('address_city') || ''
-      const state = formData.get('address_state') || ''
-      const zip = formData.get('address_zip') || ''
-      const country = formData.get('address_country_code') || ''
-      const phone = formData.get('contact_phone') || ''
-      const payerStatus = formData.get('payer_status') || ''
-      const paymentDate = formData.get('payment_date') || ''
-      const paymentType = formData.get('payment_type') || ''
+      // === SECURITY CHECK 2: Receiver must be info@nobleparc.com ===
+      if (p.receiver_email !== PAYPAL_BUSINESS_EMAIL) {
+        console.log(`IPN ignored: receiver=${p.receiver_email} (not our business email)`)
+        return new Response('OK', { status: 200 }) // silently drop, NO sheet write
+      }
 
-      const isMainland = country === ALLOWED_COUNTRY && !INVALID_STATES.includes(state)
+      // Extract fields
+      const firstName = p.first_name || ''
+      const lastName = p.last_name || ''
       const customerName = `${firstName} ${lastName}`.trim()
+      const txnId = p.txn_id || ''
+      const gross = parseFloat(p.mc_gross) || 0
+      const state = p.address_state || ''
+      const country = p.address_country_code || ''
+
+      // === MAINLAND USA CHECK ===
+      const isMainland = country === ALLOWED_COUNTRY && !INVALID_STATES.includes(state)
+
       const orderId = generateOrderID()
+      const dateTime = formatDateTime(new Date())
 
       // Build row for the 30-column sheet (A–AD)
       const row = [
-        orderId,                                          // A: Order ID
-        new Date().toISOString().replace('T', ' ').slice(0, 16), // B: Date (YYYY-MM-DD HH:MM)
-        txnId,                                            // C: PayPal Transaction ID
-        customerName,                                     // D: Customer Name
-        payerEmail,                                       // E: Email
-        phone,                                            // F: Phone
-        street,                                           // G: Address Line 1
-        street2,                                          // H: Address Line 2
-        city,                                             // I: City
-        state,                                            // J: State
-        zip,                                              // K: ZIP
-        isMainland ? 'OK' : 'BLOCKED',                    // L: Mainland Check
-        itemName,                                         // M: Product
-        parseFloat(gross),                                // N: Selling Price
-        '',                                               // O: PayPal Fee (formula in sheet)
-        '',                                               // P: Product Cost (manual)
-        '',                                               // Q: Shipping Cost (manual)
-        '',                                               // R: Total Cost (formula in sheet)
-        '',                                               // S: Margin (formula in sheet)
-        isMainland ? 'Bozza' : 'Problema',                // T: Status
-        isMainland ? 'Pending' : 'Rejected',              // U: Human Validation
-        '',                                               // V: Validated By
-        '',                                               // W: Validation Date
-        '',                                               // X: CJ Order ID
-        '',                                               // Y: Tracking Number
-        '',                                               // Z: Carrier
-        'Yes',                                            // AA: Blind Note Added
-        '',                                               // AB: Traffic Source
+        orderId,                                  // A: Order ID
+        dateTime,                                 // B: Date (YYYY-MM-DD HH:MM)
+        txnId,                                    // C: PayPal Transaction ID
+        customerName,                             // D: Customer Name
+        p.payer_email || '',                      // E: Email
+        p.contact_phone || '',                    // F: Phone
+        p.address_street || '',                   // G: Address Line 1
+        p.address_street2 || '',                  // H: Address Line 2
+        p.address_city || '',                     // I: City
+        state,                                    // J: State
+        p.address_zip || '',                      // K: ZIP
+        isMainland ? 'OK' : 'BLOCKED',            // L: Mainland Check
+        p.item_name || '',                        // M: Product
+        gross,                                    // N: Selling Price
+        '',                                       // O: PayPal Fee (formula in sheet)
+        '',                                       // P: Product Cost (manual)
+        '',                                       // Q: Shipping Cost (manual)
+        '',                                       // R: Total Cost (formula in sheet)
+        '',                                       // S: Margin (formula in sheet)
+        isMainland ? 'Bozza' : 'Problema',        // T: Status
+        isMainland ? 'Pending' : 'Rejected',      // U: Human Validation
+        '',                                       // V: Validated By
+        '',                                       // W: Validation Date
+        '',                                       // X: CJ Order ID
+        '',                                       // Y: Tracking Number
+        '',                                       // Z: Carrier
+        'Yes',                                    // AA: Blind Note Added
+        '',                                       // AB: Traffic Source
         isMainland ? '' : 'BLOCKED: outside continental US', // AC: Notes
-        new Date().toISOString().replace('T', ' ').slice(0, 16) // AD: Last Update
+        dateTime                                  // AD: Last Update
       ]
 
-      await fetch(SHEET_SCRIPT_URL, {
+      // Send to Google Sheet via Apps Script
+      const sheetResponse = await fetch(SHEET_SCRIPT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ row: row, sheetName: 'Nobleparc – Orders Control' })
       })
 
-      console.log(`Order: ${orderId} | ${itemName} | $${gross} | ${customerName} | ${state} | ${isMainland ? 'OK' : 'BLOCKED'}`)
+      const sheetText = await sheetResponse.text()
+      console.log(`Order: ${orderId} | ${p.item_name} | $${gross} | ${customerName} | ${state} | ${isMainland ? 'OK' : 'BLOCKED'} | Sheet: ${sheetText}`)
 
       return new Response('OK', { status: 200 })
+
     } catch (err) {
       console.error('IPN Error:', err.message)
       return new Response('OK', { status: 200 })
