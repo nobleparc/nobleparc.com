@@ -1,7 +1,9 @@
 {{ $org := .Site.Params }}
 {{ $product := .Params.product_schema | default dict }}
 {{ $faqItems := .Params.faq_items | default slice }}
+{{ $blogFaq := .Params.faq_schema | default slice }}
 {{ $breadcrumb := .Params.breadcrumb_schema | default slice }}
+{{ $article := .Params.schema | default dict }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -35,7 +37,24 @@
         }
         {{- end -}}
       ]
-    }{{ end }}{{ range $breadcrumb }},
+    }{{ end }}{{ if $blogFaq }},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {{- range $i, $item := $blogFaq -}}
+        {{ if $i }},{{ end }}
+        {
+          "@type": "Question",
+          "name": {{ $item.question | jsonify }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ $item.answer | jsonify }}
+          }
+        }
+        {{- end -}}
+      ]
+    }{{ end }}{{ with $article }},
+    {{ . | safeJS }}{{ end }}{{ range $breadcrumb }},
     {{ . | safeJS }}{{ end }}
   ]
 }

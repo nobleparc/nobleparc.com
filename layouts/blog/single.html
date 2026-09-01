@@ -1,0 +1,35 @@
+{{ define "main" }}
+<article class="blog-post container">
+  <div class="blog-post-header">
+    <p class="blog-post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      · {{ .ReadingTime }} min read
+    </p>
+    <h1>{{ .Title }}</h1>
+    {{ if .Params.subtitle }}
+    <p class="blog-post-subtitle">{{ .Params.subtitle }}</p>
+    {{ end }}
+  </div>
+
+  <div class="blog-post-content">
+    {{ .Content }}
+  </div>
+
+  <div class="blog-post-footer">
+    <hr>
+    <p class="text-sm" style="color:var(--gray-500);">
+      <em>This article is for informational purposes only and does not constitute medical advice. 
+      Nobleparc devices are wellness products designed for personal care and relaxation. 
+      They are not intended to diagnose, treat, cure, or prevent any disease.</em>
+    </p>
+    <div class="blog-post-nav">
+      {{ if .PrevInSection }}
+      <a href="{{ .PrevInSection.RelPermalink }}" class="btn btn-outline">← Previous</a>
+      {{ end }}
+      {{ if .NextInSection }}
+      <a href="{{ .NextInSection.RelPermalink }}" class="btn btn-outline">Next →</a>
+      {{ end }}
+    </div>
+  </div>
+</article>
+{{ end }}

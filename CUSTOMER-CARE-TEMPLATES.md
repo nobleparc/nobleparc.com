@@ -1,16 +1,12 @@
-# Nobleparc — Customer Care Templates
+# Nobleparc — Customer Care Templates (American English)
 
-**Lingua:** American English  
-**Tono:** Premium, empatico, professionale  
-**Tempo di risposta target:** < 24 ore (ordinario) / < 4 ore (problemi)
-
----
+Tono premium, empatico, professionale. Tempo di risposta target: < 24 ore (ordinario) / < 4 ore (problemi).
 
 ## 1. Order Confirmation
 
 **Trigger:** PayPal payment completed, order validated by human
 
-```email
+```
 Subject: Your Nobleparc order has been received – #[Order ID]
 
 Hi [Customer Name],
@@ -30,13 +26,11 @@ The Nobleparc Team
 support@nobleparc.com
 ```
 
----
-
 ## 2. Shipping Delay / Status Update
 
 **Trigger:** Carrier tracking shows no movement, or CJ notifies supply delay
 
-```email
+```
 Subject: Update on your Nobleparc order #[Order ID]
 
 Hi [Customer Name],
@@ -53,13 +47,11 @@ Customer Operations | Nobleparc
 support@nobleparc.com
 ```
 
----
-
 ## 3. Damaged or Defective Product
 
 **Trigger:** Customer reports broken, non-functional, or visibly damaged item
 
-```email
+```
 Subject: We're sorry about the issue with your order #[Order ID]
 
 Hi [Customer Name],
@@ -77,13 +69,11 @@ Customer Care | Nobleparc
 support@nobleparc.com
 ```
 
----
-
 ## 4. Return / 30-Day Money-Back Guarantee (Smart Resolution)
 
 **Trigger:** Customer asks for refund or return (any reason — 30-day guarantee applies)
 
-```email
+```
 Subject: Regarding your Nobleparc order #[Order ID] – Resolution
 
 Hi [Customer Name],
@@ -102,13 +92,11 @@ Customer Care | Nobleparc
 support@nobleparc.com
 ```
 
----
-
 ## 5. Pre-Purchase Inquiry (Clean version)
 
 **Trigger:** Customer asks a question before buying
 
-```email
+```
 Subject: Re: Your question about Nobleparc
 
 Hi [Customer Name],
@@ -124,28 +112,9 @@ The Nobleparc Team
 support@nobleparc.com
 ```
 
----
-
-## Template — Blind Shipping Note (per ordini CJ — non per il cliente)
-
-Copia **obbligatoriamente** in ogni ordine CJ Dropshipping:
+## 6. Traffic Source Question (post-consegna)
 
 ```
-⚠️ BLIND SHIPPING — CRITICAL INSTRUCTIONS:
-
-1. No invoice, no receipt, no price tag inside the package
-2. No promotional material, no flyers, no coupons, no QR codes
-3. No Chinese writing or non-English text on the package or inside
-4. No supplier branding, logos, or company name visible anywhere
-5. Neutral unbranded packaging only — plain box or poly mailer
-6. Return address must be generic (no Chinese characters)
-
-FAILURE TO COMPLY WILL RESULT IN IMMEDIATE CANCELLATION OF ALL FUTURE ORDERS.
-```
-
-## Template — Traffic Source Question (post-consegna)
-
-```email
 Subject: Quick question about your Nobleparc order
 
 Hi [Customer Name],
@@ -161,4 +130,21 @@ Thanks so much — it really helps us out.
 Best regards,
 The Nobleparc Team
 support@nobleparc.com
+```
+
+## 7. Blind Shipping Note (per CJ Dropshipping — non per il cliente)
+
+Copia in OGNI ordine CJ:
+
+```
+⚠️ BLIND SHIPPING — CRITICAL INSTRUCTIONS:
+
+1. No invoice, no receipt, no price tag inside the package
+2. No promotional material, no flyers, no coupons, no QR codes
+3. No Chinese writing or non-English text on the package or inside
+4. No supplier branding, logos, or company name visible anywhere
+5. Neutral unbranded packaging only — plain box or poly mailer
+6. Return address must be generic (no Chinese characters)
+
+FAILURE TO COMPLY WILL RESULT IN IMMEDIATE CANCELLATION OF ALL FUTURE ORDERS.
 ```

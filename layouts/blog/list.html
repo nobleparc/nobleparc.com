@@ -1,0 +1,26 @@
+{{ define "main" }}
+<section class="blog-list container">
+  <header class="blog-list-header">
+    <h1>{{ .Title | default "The Nobleparc Journal" }}</h1>
+    <p class="blog-list-desc">Guides, tips, and insights for your home wellness journey.</p>
+  </header>
+
+  <div class="blog-grid">
+    {{ range .Pages.ByDate.Reverse }}
+    <article class="blog-card">
+      <a href="{{ .RelPermalink }}" class="blog-card-link">
+        <div class="blog-card-body">
+          <p class="blog-card-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            · {{ .ReadingTime }} min read
+          </p>
+          <h2 class="blog-card-title">{{ .Title }}</h2>
+          <p class="blog-card-desc">{{ .Params.description }}</p>
+          <span class="blog-card-cta">Read More →</span>
+        </div>
+      </a>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
