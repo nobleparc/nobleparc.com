@@ -6,7 +6,6 @@ layout: single
 ---
 
 <section class="page-section container">
-  <h1>Privacy Policy</h1>
   <p><em>Last updated: August 2026</em></p>
 
   <h2>Information We Collect</h2>

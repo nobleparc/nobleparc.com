@@ -6,7 +6,6 @@ layout: single
 ---
 
 <section class="page-section container">
-  <h1>Terms of Service</h1>
   <p><em>Last updated: August 2026</em></p>
 
   <h2>General</h2>

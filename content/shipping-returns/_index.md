@@ -6,8 +6,6 @@ layout: single
 ---
 
 <section class="page-section container">
-  <h1>Shipping &amp; Returns</h1>
-
   <h2>Shipping</h2>
   <p><strong>Free US shipping</strong> on every order — no minimum, no exceptions.</p>
   <p><strong>Shipping area:</strong> We ship exclusively to the <strong>continental United States</strong> (48 contiguous states). We are unable to ship to Hawaii, Alaska, Puerto Rico, or other US territories at this time.</p>

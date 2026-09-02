@@ -2,7 +2,6 @@
 title: "Order Confirmation"
 description: "Thank you for your order!"
 robots: "noindex, nofollow"
-layout: single
 ---
 
 <div class="confirmation-page container">

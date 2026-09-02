@@ -6,8 +6,6 @@ layout: single
 ---
 
 <section class="page-section container">
-  <h1>About Nobleparc</h1>
-
   <h2>Wellness at Home, Redesigned</h2>
   <p>Nobleparc was born from a simple observation: the best wellness tools are the ones you actually use. We felt that red light therapy and therapeutic massage — technologies with decades of real-world use — shouldn't require appointments, commutes, or clinic prices.</p>
   <p>So we set out to design devices that fit seamlessly into real life. Devices you'd actually look forward to using. Devices that turn your daily wind-down into a moment of genuine self-care.</p>

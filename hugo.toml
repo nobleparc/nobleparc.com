@@ -7,7 +7,7 @@ enableRobotsTXT = true
 [params]
   siteName = "Nobleparc"
   description = "Premium wellness devices for home self-care — red light therapy masks and scalp massagers. Free US shipping."
-  ogImage = "/images/og-default.webp"
+  ogImage = "/images/og-default.svg"
   utmSource = "nobleparc"
   orgName = "Nobleparc"
   orgURL = "https://nobleparc.com"

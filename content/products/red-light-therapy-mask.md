@@ -73,7 +73,7 @@ product_schema_raw: |-
     "brand": { "@type": "Brand", "name": "Nobleparc" },
     "sku": "NP-RLM-001",
     "mpn": "NP-RL-100",
-    "image": ["https://nobleparc.com/images/product-mask-hero.webp"],
+    "image": ["https://nobleparc.com/images/product-mask-768.svg"],
     "offers": {
       "@type": "Offer",
       "url": "https://nobleparc.com/products/red-light-therapy-mask/",
