@@ -1,240 +1,228 @@
 {{ define "main" }}
 {{ $faq := .Params.faq_items }}
-<article class="product-page">
-  <!-- Breadcrumb -->
-  <nav aria-label="Breadcrumb" class="container">
-    <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
-        <meta itemprop="position" content="1">
-      </li>
-      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
-        <span itemprop="name">{{ .Title }}</span>
-        <meta itemprop="position" content="2">
-      </li>
-    </ol>
-  </nav>
+{{ $slug := .Params.slug }}
+{{ $hero := cond (eq $slug "massager") "chair" "golden" }}
+{{ $story := cond (eq $slug "massager") "bathtub" "bedroom" }}
+{{ $ritual1 := cond (eq $slug "massager") "desk" "sofa" }}
+{{ $ritual2 := cond (eq $slug "massager") "bathtub" "bathroom" }}
+{{ $ritual3 := cond (eq $slug "massager") "chair" "chair" }}
+{{ $detail := "detail" }}
+{{ $box := "desk" }}
+{{ $purchase := "shelf" }}
+<article class="product-cinematic">
 
-  <!-- Hero — no price, no buy button. Just storytelling -->
-  <section class="product-hero">
-    <div class="container product-hero-grid">
-      <div class="product-hero-visual">
-        <picture>
-          <source srcset="/images/{{ .Params.slug }}-hero-480w.webp 480w,
-                          /images/{{ .Params.slug }}-hero-768w.webp 768w,
-                          /images/{{ .Params.slug }}-hero-1200w.webp 1200w"
-                  sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 600px"
-                  type="image/webp">
-          <img src="/images/{{ .Params.slug }}-hero-768w.webp"
-               alt="{{ .Params.image_alt }}"
-               width="768" height="576"
-               decoding="async"
-               fetchpriority="high"
-               class="product-hero-img">
-        </picture>
-      </div>
-      <div class="product-hero-info">
-        <div class="hero-badge">✦ {{ if eq .Params.slug "mask" }}Red Light Therapy{{ else }}Scalp Therapy{{ end }}</div>
+  <!-- HERO — full-bleed scene, no price -->
+  <section class="p-hero">
+    <picture>
+      <source srcset="/images/{{ $slug }}-{{ $hero }}-480w.webp 480w,
+                      /images/{{ $slug }}-{{ $hero }}-768w.webp 768w,
+                      /images/{{ $slug }}-{{ $hero }}-1200w.webp 1200w"
+              sizes="100vw" type="image/webp">
+      <img src="/images/{{ $slug }}-{{ $hero }}-1200w.webp" alt="{{ .Params.image_alt }}" width="1200" height="900" fetchpriority="high" class="p-hero-bg">
+    </picture>
+    <div class="p-hero-overlay">
+      <div class="p-hero-text">
+        <span class="hero-eyebrow">{{ if eq .Params.slug "mask" }}✦ Red Light Therapy{{ else }}✦ Scalp Therapy{{ end }}</span>
         <h1>{{ .Title }}</h1>
-        <p class="product-short-desc">{{ .Params.short_desc }}</p>
-        <div class="hero-usp-list">
+        <p class="p-hero-desc">{{ .Params.short_desc }}</p>
+        <div class="p-hero-usp">
           {{ range .Params.bullets }}
-          <div class="hero-usp-item">
-            <span class="hero-usp-check">✦</span>
-            <span>{{ . }}</span>
-          </div>
+          <span class="p-hero-usp-item">{{ . }}</span>
           {{ end }}
         </div>
-        <a href="#ritual" class="btn btn-outline">Discover the Experience →</a>
+        <a href="#p-story" class="btn btn-outline">Discover the Story →</a>
       </div>
     </div>
   </section>
 
-  <!-- The Story — narrative section -->
-  <section class="story-section">
-    <div class="container story-grid">
-      <div class="story-visual">
-        <img src="/images/{{ .Params.slug }}-lifestyle-768w.webp" alt="{{ .Title }} — in your daily ritual" width="768" height="576" loading="lazy" onerror="this.src='/images/{{ .Params.slug }}-hero-768w.webp'">
-      </div>
-      <div class="story-text">
-        <span class="section-label">The Story</span>
-        <h2>{{ if eq .Params.slug "mask" }}Your Skin's Daily Recharge{{ else }}Tension Relief, One Session at a Time{{ end }}</h2>
-        <p>{{ if eq .Params.slug "mask" }}
-          Red light therapy isn't a luxury — it's a daily practice. The same technology trusted by wellness professionals for decades is now available in a device that fits seamlessly into your evening routine. No appointments, no commute, no clinic prices.
-          {{ else }}
-          Modern life lives in your shoulders and scalp. The Electric Scalp Massager is designed to melt away the tension of a long day with gentle, invigorating vibrations that mimic the hands of a professional masseuse.
-          {{ end }}</p>
-        <p>{{ if eq .Params.slug "mask" }}
-          With 180 medical-grade LEDs across four clinically-studied wavelengths, our mask delivers professional-grade light therapy in a comfortable, hands-free silicone design. Just 10 minutes a day — while you read, stretch, or simply relax.
-          {{ else }}
-          With 8 deep-kneading nodes and 3 adjustable intensity levels, it's like having a personal massage therapist available whenever you need one. Use it on dry hair or in the shower — the IPX6 water-resistant design makes it your bathroom companion.
-          {{ end }}</p>
-      </div>
+  <!-- THE STORY — unique lifestyle -->
+  <section class="p-chapter" id="p-story">
+    <div class="chapter-media">
+      <picture>
+        <source srcset="/images/{{ $slug }}-{{ $story }}-480w.webp 480w,
+                        /images/{{ $slug }}-{{ $story }}-768w.webp 768w,
+                        /images/{{ $slug }}-{{ $story }}-1200w.webp 1200w"
+                sizes="100vw" type="image/webp">
+        <img src="/images/{{ $slug }}-{{ $story }}-1200w.webp" alt="{{ .Title }} in a warm bedroom setting" width="1200" height="900" loading="lazy">
+      </picture>
     </div>
-  </section>
-
-  <!-- The Ritual — lifestyle gallery -->
-  <section id="ritual" class="ritual-section">
-    <div class="container">
-      <div class="section-title">
-        <span class="section-label">The Ritual</span>
-        <h2>10 Minutes of Me-Time</h2>
-        <p>{{ if eq .Params.slug "mask" }}Your evening routine, reimagined.{{ else }}A moment of calm, whenever you need it.{{ end }}</p>
-      </div>
-      <div class="ritual-grid">
-        <div class="ritual-card">
-          <div class="ritual-image">
-            <img src="/images/{{ .Params.slug }}-hero-768w.webp" alt="{{ .Title }}" loading="lazy" width="768" height="576">
-          </div>
-          <div class="ritual-caption">
-            <span class="ritual-step">01</span>
-            <h3>Prepare</h3>
-            <p>Start with clean, dry skin. Find a comfortable spot — your favorite chair, the sofa, or your bed.</p>
-          </div>
-        </div>
-        <div class="ritual-card">
-          <div class="ritual-image">
-            <img src="/images/{{ .Params.slug }}-angle-768w.webp" alt="{{ .Title }} — detail" loading="lazy" width="768" height="576" onerror="this.src='/images/{{ .Params.slug }}-hero-768w.webp'">
-          </div>
-          <div class="ritual-caption">
-            <span class="ritual-step">02</span>
-            <h3>Relax</h3>
-            <p>{{ if eq .Params.slug "mask" }}Put on your mask and press start. Close your eyes, breathe deeply, and let the gentle warmth work.{{ else }}Choose your intensity level. Close your eyes and let the kneading nodes melt away the day's tension.{{ end }}</p>
-          </div>
-        </div>
-        <div class="ritual-card">
-          <div class="ritual-image">
-            <img src="/images/{{ .Params.slug }}-lifestyle-768w.webp" alt="{{ .Title }} — lifestyle" loading="lazy" width="768" height="576" onerror="this.src='/images/{{ .Params.slug }}-hero-768w.webp'">
-          </div>
-          <div class="ritual-caption">
-            <span class="ritual-step">03</span>
-            <h3>Restore</h3>
-            <p>{{ if eq .Params.slug "mask" }}After 10 minutes, the mask shuts off automatically. Remove, continue with your skincare, and sleep well.{{ else }}After 10-15 minutes, rinse and store. Your scalp feels renewed, your mind clearer.{{ end }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- The Details — specs as benefits -->
-  <section class="details-section">
-    <div class="container">
-      <div class="section-title">
-        <span class="section-label">The Details</span>
-        <h2>Carefully Engineered</h2>
-        <p>Every component is chosen for quality, comfort, and lasting performance.</p>
-      </div>
-      <div class="details-grid">
-        {{ range .Params.specs }}
-        <div class="detail-item">
-          <span class="detail-label">{{ .label }}</span>
-          <span class="detail-value">{{ .value }}</span>
-        </div>
-        {{ end }}
-      </div>
-    </div>
-  </section>
-
-  <!-- What's in the Box -->
-  <section class="box-section">
-    <div class="container">
-      <div class="section-title">
-        <span class="section-label">What's Included</span>
-        <h2>Everything You Need</h2>
-      </div>
-      <div class="box-content">
-        <div class="box-visual">
-          <img src="/images/{{ .Params.slug }}-hero-768w.webp" alt="{{ .Title }} — unboxing" loading="lazy" width="768" height="576">
-        </div>
-        <div class="box-list">
-          <ul>
-            <li>{{ .Title }} unit</li>
-            <li>USB-C charging cable</li>
-            <li>Travel pouch</li>
-            <li>Quick-start guide</li>
-            {{ if eq .Params.slug "mask" }}
-            <li>2-year limited warranty</li>
-            {{ else }}
-            <li>2-year limited warranty</li>
-            {{ end }}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Begin Your Ritual — buy button at the end -->
-  <section class="purchase-section">
-    <div class="container purchase-card">
-      <div class="purchase-visual">
-        <img src="/images/{{ .Params.slug }}-hero-768w.webp" alt="{{ .Title }}" width="200" height="150" loading="lazy">
-      </div>
-      <div class="purchase-info">
-        <span class="section-label">Begin Your Ritual</span>
-        <h2>{{ .Title }}</h2>
-        <p class="purchase-price">${{ .Params.price }}</p>
-        <p class="purchase-guarantee">Free US Shipping · 30-Day Money-Back Guarantee · Secure via PayPal</p>
-        {{ if .Site.Params.paypalEmail }}
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="{{ .Site.Params.paypalEmail }}">
-          <input type="hidden" name="item_name" value="{{ .Title }}">
-          <input type="hidden" name="amount" value="{{ printf "%.2f" (float .Params.price) }}">
-          <input type="hidden" name="currency_code" value="USD">
-          <input type="hidden" name="no_shipping" value="2">
-          <input type="hidden" name="return" value="https://nobleparc.com/confirmation/">
-          <input type="hidden" name="cancel_return" value="https://nobleparc.com/">
-          <input type="hidden" name="lc" value="US">
-          <button type="submit" class="buy-button">
-            <span class="buy-button-label">Begin Your Ritual</span>
-            <span class="buy-button-price">${{ .Params.price }}</span>
-          </button>
-        </form>
+    <div class="chapter-text">
+      <span class="scene-label">The Story</span>
+      <h2>{{ if eq .Params.slug "mask" }}Your Skin's Daily Recharge{{ else }}Tension Relief, One Session at a Time{{ end }}</h2>
+      <p>{{ if eq .Params.slug "mask" }}
+        Red light therapy isn't a luxury — it's a daily practice. The same clinically-studied technology trusted by wellness professionals is now available in a device that fits seamlessly into your evening routine. No appointments, no commute, no clinic prices.
         {{ else }}
-        <a href="/faq/" class="btn btn-primary">Coming Soon</a>
-        {{ end }}
-        <p class="shipping-timeframe">Free tracked US shipping — {{ .Params.shipping_days | default "3-7" }} business days.</p>
-      </div>
+        Modern life lives in your shoulders and scalp. The Nobleparc Electric Scalp Massager is designed to melt away the tension of a long day with gentle, invigorating vibrations that mimic the hands of a professional masseuse.
+        {{ end }}</p>
+      <p>{{ if eq .Params.slug "mask" }}
+        With 180 medical-grade LEDs across four clinically-studied wavelengths — 630nm, 660nm, 830nm, and 850nm — our mask delivers professional-grade light therapy in a comfortable, hands-free silicone design. Just 10 minutes a day while you read, stretch, or relax.
+        {{ else }}
+        With 8 deep-kneading nodes and 3 adjustable intensity levels, it's like having a personal massage therapist available whenever you need one. The IPX6 water-resistant design makes it your bathroom companion — use it on dry hair or in the shower.
+        {{ end }}</p>
     </div>
   </section>
 
-  <!-- FAQ accordion -->
-  {{ if $faq }}
-  <section class="faq-section container" itemscope itemtype="https://schema.org/FAQPage">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-list">
-      {{ range $faq }}
-      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question" aria-expanded="false" itemprop="name">{{ .question }}</button>
-        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <div itemprop="text">{{ .answer | safeHTML }}</div>
+  <!-- THE RITUAL — 3 unique scenes -->
+  <section class="p-chapter chapter-ritual">
+    <div class="chapter-text">
+      <span class="scene-label">The Ritual</span>
+      <h2>10 Minutes of Me-Time</h2>
+    </div>
+    <div class="ritual-cinematic">
+      <div class="ritual-scene">
+        <picture>
+          <source srcset="/images/{{ $slug }}-{{ $ritual1 }}-480w.webp 480w,
+                          /images/{{ $slug }}-{{ $ritual1 }}-768w.webp 768w,
+                          /images/{{ $slug }}-{{ $ritual1 }}-1200w.webp 1200w"
+                  sizes="100vw" type="image/webp">
+          <img src="/images/{{ $slug }}-{{ $ritual1 }}-1200w.webp" alt="{{ .Title }} — prepare your ritual" width="1200" height="900" loading="lazy">
+        </picture>
+        <div class="ritual-caption">
+          <span class="ritual-num">01</span>
+          <h3>Prepare</h3>
+          <p>Start with clean, dry skin. Find your comfortable spot — your favorite chair, the sofa, or your bed.</p>
         </div>
       </div>
-      {{ end }}
+      <div class="ritual-scene">
+        <picture>
+          <source srcset="/images/{{ $slug }}-{{ $ritual2 }}-480w.webp 480w,
+                          /images/{{ $slug }}-{{ $ritual2 }}-768w.webp 768w,
+                          /images/{{ $slug }}-{{ $ritual2 }}-1200w.webp 1200w"
+                  sizes="100vw" type="image/webp">
+          <img src="/images/{{ $slug }}-{{ $ritual2 }}-1200w.webp" alt="{{ .Title }} — relax" width="1200" height="900" loading="lazy">
+        </picture>
+        <div class="ritual-caption">
+          <span class="ritual-num">02</span>
+          <h3>Relax</h3>
+          <p>{{ if eq .Params.slug "mask" }}Put on your mask and press start. Close your eyes, breathe deeply, and let the gentle warmth work.{{ else }}Choose your intensity level. Close your eyes and let the kneading nodes melt away the day's tension.{{ end }}</p>
+        </div>
+      </div>
+      <div class="ritual-scene">
+        <picture>
+          <source srcset="/images/{{ $slug }}-{{ $ritual3 }}-480w.webp 480w,
+                          /images/{{ $slug }}-{{ $ritual3 }}-768w.webp 768w,
+                          /images/{{ $slug }}-{{ $ritual3 }}-1200w.webp 1200w"
+                  sizes="100vw" type="image/webp">
+          <img src="/images/{{ $slug }}-{{ $ritual3 }}-1200w.webp" alt="{{ .Title }} — restore" width="1200" height="900" loading="lazy">
+        </picture>
+        <div class="ritual-caption">
+          <span class="ritual-num">03</span>
+          <h3>Restore</h3>
+          <p>{{ if eq .Params.slug "mask" }}After 10 minutes, the mask shuts off automatically. Remove, continue with your evening skincare, and sleep well.{{ else }}After 10-15 minutes, rinse and store. Your scalp feels renewed, your mind clearer.{{ end }}</p>
+        </div>
+      </div>
     </div>
   </section>
-  {{ end }}
 
-  <!-- Testimonials -->
-  {{ if .Params.testimonials }}
-  <section class="testimonials-section container">
-    <h2>What Our Customers Say</h2>
-    <div class="testimonials-grid">
-      {{ range .Params.testimonials }}
-      <div class="testimonial-card">
-        <p class="testimonial-text">"{{ .text }}"</p>
-        <p class="testimonial-author">— {{ .author }}</p>
+  <!-- THE DETAILS — specs as benefits + close-up -->
+  <section class="p-chapter chapter-details">
+    <div class="chapter-media">
+      <picture>
+        <source srcset="/images/{{ $slug }}-{{ $detail }}-480w.webp 480w,
+                        /images/{{ $slug }}-{{ $detail }}-768w.webp 768w,
+                        /images/{{ $slug }}-{{ $detail }}-1200w.webp 1200w"
+                sizes="100vw" type="image/webp">
+        <img src="/images/{{ $slug }}-{{ $detail }}-1200w.webp" alt="{{ .Title }} — detail view" width="1200" height="900" loading="lazy">
+      </picture>
+    </div>
+    <div class="chapter-text">
+      <span class="scene-label">The Details</span>
+      <h2>Carefully Engineered</h2>
+      <div class="specs-cinematic">
+        {{ range .Params.specs }}
+        <div class="spec-row">
+          <span class="spec-label">{{ .label }}</span>
+          <span class="spec-value">{{ .value }}</span>
+        </div>
+        {{ end }}
       </div>
+    </div>
+  </section>
+
+  <!-- BOX -->
+  <section class="p-chapter chapter-box">
+    <div class="chapter-media">
+      <picture>
+        <source srcset="/images/{{ $slug }}-{{ $box }}-480w.webp 480w,
+                        /images/{{ $slug }}-{{ $box }}-768w.webp 768w,
+                        /images/{{ $slug }}-{{ $box }}-1200w.webp 1200w"
+                sizes="100vw" type="image/webp">
+        <img src="/images/{{ $slug }}-{{ $box }}-1200w.webp" alt="{{ .Title }} — what's included" width="1200" height="900" loading="lazy">
+      </picture>
+    </div>
+    <div class="chapter-text">
+      <span class="scene-label">What's Included</span>
+      <h2>Everything You Need</h2>
+      <ul class="box-list-cinematic">
+        <li>{{ .Title }} unit</li>
+        <li>USB-C charging cable</li>
+        <li>Travel pouch</li>
+        <li>Quick-start guide</li>
+        <li>2-year limited warranty</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PURCHASE — price + buy button, final scene -->
+  <section class="p-chapter chapter-purchase">
+    <div class="chapter-media">
+      <picture>
+        <source srcset="/images/{{ $slug }}-{{ $purchase }}-480w.webp 480w,
+                        /images/{{ $slug }}-{{ $purchase }}-768w.webp 768w,
+                        /images/{{ $slug }}-{{ $purchase }}-1200w.webp 1200w"
+                sizes="100vw" type="image/webp">
+        <img src="/images/{{ $slug }}-{{ $purchase }}-1200w.webp" alt="{{ .Title }} — complete your ritual" width="1200" height="900" loading="lazy">
+      </picture>
+    </div>
+    <div class="chapter-text chapter-cta-text">
+      <span class="scene-label">Begin Your Ritual</span>
+      <h2>{{ .Title }}</h2>
+      <p class="purchase-price">${{ .Params.price }}</p>
+      <p class="purchase-guarantee">Free US Shipping · 30-Day Money-Back Guarantee · 2-Year Warranty</p>
+      {{ if .Site.Params.paypalEmail }}
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form-cinematic">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="{{ .Site.Params.paypalEmail }}">
+        <input type="hidden" name="item_name" value="{{ .Title }}">
+        <input type="hidden" name="amount" value="{{ printf "%.2f" (float .Params.price) }}">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="no_shipping" value="2">
+        <input type="hidden" name="return" value="https://nobleparc.com/confirmation/">
+        <input type="hidden" name="cancel_return" value="https://nobleparc.com/">
+        <input type="hidden" name="lc" value="US">
+        <button type="submit" class="btn btn-primary btn-purchase">
+          <span>Begin Your Ritual — ${{ .Params.price }}</span>
+        </button>
+      </form>
       {{ end }}
+      <p class="shipping-note">Free tracked US shipping — {{ .Params.shipping_days | default "3-7" }} business days.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  {{ if $faq }}
+  <section class="p-chapter chapter-faq" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="chapter-text">
+      <span class="scene-label">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-cinematic">
+        {{ range $faq }}
+        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button class="faq-question" aria-expanded="false" itemprop="name">{{ .question }}</button>
+          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">{{ .answer | safeHTML }}</div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
     </div>
   </section>
   {{ end }}
 </article>
 
-<!-- Mobile sticky CTA — only appears at the end after scrolling -->
-<div class="mobile-cta" aria-label="Purchase">
+<div class="mobile-purchase-bar">
   {{ if .Site.Params.paypalEmail }}
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form-cinematic">
     <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="{{ .Site.Params.paypalEmail }}">
     <input type="hidden" name="item_name" value="{{ .Title }}">
@@ -244,8 +232,8 @@
     <input type="hidden" name="return" value="https://nobleparc.com/confirmation/">
     <input type="hidden" name="cancel_return" value="https://nobleparc.com/">
     <input type="hidden" name="lc" value="US">
-    <button type="submit" class="buy-button">
-      <span>Begin Your Ritual — ${{ .Params.price }}</span>
+    <button type="submit" class="btn btn-primary">
+      Begin Your Ritual — ${{ .Params.price }}
     </button>
   </form>
   {{ end }}
