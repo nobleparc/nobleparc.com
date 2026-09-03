@@ -1,22 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fef3c7"/>
-      <stop offset="50%" style="stop-color:#fed7aa"/>
-      <stop offset="100%" style="stop-color:#fde68a"/>
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="50%" style="stop-color:#16213e"/>
+      <stop offset="100%" style="stop-color:#0f3460"/>
     </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="35%">
+      <stop offset="0%" style="stop-color:#c97b5d;stop-opacity:.3"/>
+      <stop offset="100%" style="stop-color:#c97b5d;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="ledGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff6b4a;stop-opacity:.8"/>
+      <stop offset="60%" style="stop-color:#c97b5d;stop-opacity:.35"/>
+      <stop offset="100%" style="stop-color:#c97b5d;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="nirGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:.45"/>
+      <stop offset="60%" style="stop-color:#8b5cf6;stop-opacity:.12"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0"/>
+    </radialGradient>
+    <linearGradient id="silicone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f5f4"/>
+      <stop offset="100%" style="stop-color:#d6d3d1"/>
+    </linearGradient>
+    <filter id="softGlow"><feGaussianBlur stdDeviation="2"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
   </defs>
   <rect width="500" height="500" fill="url(#bg)"/>
-  <ellipse cx="250" cy="240" rx="105" ry="115" fill="#fff" opacity=".85"/>
-  <circle cx="208" cy="208" r="4" fill="#c97b5d" opacity=".6"/>
-  <circle cx="228" cy="198" r="4" fill="#c97b5d" opacity=".6"/>
-  <circle cx="250" cy="193" r="4" fill="#c97b5d" opacity=".6"/>
-  <circle cx="272" cy="198" r="4" fill="#c97b5d" opacity=".6"/>
-  <circle cx="292" cy="208" r="4" fill="#c97b5d" opacity=".6"/>
-  <circle cx="203" cy="230" r="4" fill="#c97b5d" opacity=".6"/>
-  <circle cx="225" cy="218" r="4" fill="#c97b5d" opacity=".6"/>
-  <circle cx="250" cy="213" r="4" fill="#c97b5d" opacity=".6"/>
-  <circle cx="275" cy="218" r="4" fill="#c97b5d" opacity=".6"/>
-  <circle cx="297" cy="230" r="4" fill="#c97b5d" opacity=".6"/>
-  <text x="250" y="410" text-anchor="middle" fill="#8b5a2b" font-size="16" font-weight="bold" font-family="system-ui">Red Light Mask</text>
+  <ellipse cx="250" cy="220" rx="145" ry="125" fill="url(#glow)"/>
+  <!-- Mask silhouette -->
+  <path d="M145,160 Q145,125 192,117 L222,113 Q236,110 250,109 Q264,110 278,113 L308,117 Q355,125 355,160 L355,240 Q355,275 308,285 L278,290 Q264,293 250,294 Q236,293 222,290 L192,285 Q145,275 145,240 Z" fill="url(#silicone)" stroke="#a8a29e" stroke-width="1" opacity=".95"/>
+  <path d="M172,172 Q172,140 205,133 L226,129 Q238,127 250,126 Q262,127 274,129 L295,133 Q328,140 328,172 L328,228 Q328,260 295,267 L274,271 Q262,273 250,274 Q238,273 226,271 L205,267 Q172,260 172,228 Z" fill="#292524" opacity=".85"/>
+  <!-- LED dots -->
+  <g filter="url(#softGlow)">
+    <circle cx="198" cy="160" r="5" fill="url(#ledGlow)"/><circle cx="215" cy="153" r="5" fill="url(#ledGlow)"/><circle cx="232" cy="148" r="5" fill="url(#ledGlow)"/><circle cx="250" cy="146" r="5" fill="url(#ledGlow)"/><circle cx="268" cy="148" r="5" fill="url(#ledGlow)"/><circle cx="285" cy="153" r="5" fill="url(#ledGlow)"/><circle cx="302" cy="160" r="5" fill="url(#ledGlow)"/>
+    <circle cx="190" cy="178" r="5" fill="url(#ledGlow)"/><circle cx="207" cy="170" r="5" fill="url(#ledGlow)"/><circle cx="224" cy="164" r="5" fill="url(#ledGlow)"/><circle cx="240" cy="160" r="5" fill="url(#ledGlow)"/><circle cx="250" cy="159" r="5" fill="url(#ledGlow)"/><circle cx="260" cy="160" r="5" fill="url(#ledGlow)"/><circle cx="276" cy="164" r="5" fill="url(#ledGlow)"/><circle cx="293" cy="170" r="5" fill="url(#ledGlow)"/><circle cx="310" cy="178" r="5" fill="url(#ledGlow)"/>
+    <circle cx="195" cy="195" r="5" fill="url(#nirGlow)"/><circle cx="212" cy="187" r="5" fill="url(#nirGlow)"/><circle cx="229" cy="181" r="5" fill="url(#nirGlow)"/><circle cx="245" cy="178" r="5" fill="url(#nirGlow)"/><circle cx="250" cy="177" r="5" fill="url(#nirGlow)"/><circle cx="255" cy="178" r="5" fill="url(#nirGlow)"/><circle cx="271" cy="181" r="5" fill="url(#nirGlow)"/><circle cx="288" cy="187" r="5" fill="url(#nirGlow)"/><circle cx="305" cy="195" r="5" fill="url(#nirGlow)"/>
+  </g>
+  <ellipse cx="220" cy="195" rx="14" ry="8" fill="#1a1a2e" stroke="#a8a29e" stroke-width=".6"/>
+  <ellipse cx="280" cy="195" rx="14" ry="8" fill="#1a1a2e" stroke="#a8a29e" stroke-width=".6"/>
+  <text x="250" y="330" text-anchor="middle" fill="#c97b5d" font-size="13" font-weight="600" font-family="Inter,system-ui" letter-spacing="1">RED LIGHT MASK</text>
+  <text x="250" y="348" text-anchor="middle" fill="#a8a29e" font-size="10" font-family="Inter,system-ui">Dual-Wavelength · 180 LEDs</text>
 </svg>

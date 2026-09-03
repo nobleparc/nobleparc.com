@@ -60,6 +60,17 @@ categories:
       - q: "How will my order be packaged?"
         a: "All orders ship in discreet, neutral packaging with no branding, logos, or product descriptions visible from the outside. No invoices or promotional materials are included. Your privacy is important to us."
 
+  - category: "Trust & Value"
+    questions:
+      - q: "Is this the same as those $30 masks on Amazon?"
+        a: "Not all devices are created equal. Many budget masks under $50 use low-power LEDs, skip the near-infrared wavelengths (830-850nm), or are made of hard plastic that doesn't conform to your face. Our mask uses 180 medical-grade LEDs with both red and near-infrared wavelengths, medical-grade silicone construction, and a 2-year warranty. We're priced at $69 because we focus on quality components and fair pricing — not because we add luxury brand markups."
+      - q: "How do I know Nobleparc is a legitimate company?"
+        a: "We're a US-based brand with real customer support, a physical return address, and a 30-day satisfaction guarantee. You can reach us at support@nobleparc.com. We accept PayPal (which offers buyer protection), and our website uses secure checkout. We're transparent about who we are, what our products are made of, and how to reach us — that's how trust is built."
+      - q: "Why does it cost $69 if it ships from China?"
+        a: "Our product is designed in the US and manufactured in partnership with facilities that meet our quality standards. The price reflects the component quality (medical-grade LEDs, dual-wavelength support, silicone construction) and our commitment to a premium customer experience — not where it's assembled. We believe in fair pricing: quality materials, honest features, and a satisfaction guarantee, without the luxury markup."
+      - q: "Can I pay with a credit card without PayPal?"
+        a: "PayPal is our current payment provider. You can use any major credit or debit card through PayPal without creating an account — just select 'Pay with Debit or Credit Card' at checkout. This also gives you PayPal's buyer protection at no extra cost."
+
   - category: "Legal & Disclaimer"
     questions:
       - q: "Are Nobleparc products medical devices?"
