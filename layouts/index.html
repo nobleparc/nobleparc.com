@@ -1,13 +1,12 @@
 {{ define "main" }}
-<!-- Hero Section -->
+<!-- Hero — soft welcome, no aggressive CTAs -->
 <section class="hero">
   <div class="container hero-content">
     <div class="hero-badge">✦ Premium Wellness Devices</div>
-    <h1 class="hero-headline">Look Radiant.<br>Sleep Deeply.<span style="color:var(--accent2)"> Recover Naturally.</span></h1>
-    <p class="hero-subhead">Professional-grade wellness devices for your home self-care ritual. Same technology trusted by spas and clinics — designed for your daily routine.</p>
+    <h1 class="hero-headline">Look Radiant.<br>Sleep Deeply.<br><span style="color:var(--accent2)">Recover Naturally.</span></h1>
+    <p class="hero-subhead">Your daily moment of calm — professional-grade wellness technology,<br>designed for the comfort of your home.</p>
     <div class="hero-ctas">
-      <a href="/products/mask/" class="btn btn-primary btn-lg">Shop Red Light Mask</a>
-      <a href="/products/massager/" class="btn btn-outline btn-lg">Explore Scalp Massager</a>
+      <a href="#discover" class="btn btn-primary btn-lg">Begin Your Ritual</a>
     </div>
     <div class="hero-trust">
       <span class="hero-trust-item">
@@ -16,77 +15,68 @@
       </span>
       <span class="hero-trust-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        30-Day Money-Back Guarantee
+        30-Day Guarantee
       </span>
       <span class="hero-trust-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         2-Year Warranty
       </span>
-      <span class="hero-trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Secure via PayPal
-      </span>
     </div>
   </div>
 </section>
 
-<!-- Featured Products -->
-<section class="featured-section container">
-  <div class="section-title">
-    <span class="section-label">Shop Our Collection</span>
-    <h2>Premium Wellness, At Home</h2>
-    <p>Designed for daily self-care. Built to last. Backed by a satisfaction guarantee.</p>
-  </div>
-  <div class="product-grid">
-    {{ $mask := .Site.GetPage "/products/red-light-therapy-mask" }}
-    {{ $massager := .Site.GetPage "/products/electric-scalp-massager" }}
-    {{ with $mask }}
-    <article class="product-card">
-      <a href="{{ .RelPermalink }}" class="product-card-link">
-        <div class="product-card-badge">Best Seller</div>
-        <div class="product-card-image">
-          <img src="/images/mask-hero-card.webp" alt="Nobleparc Red Light Therapy Face Mask" width="500" height="500" loading="lazy" decoding="async">
+<!-- Discover — storytelling before shopping -->
+<section id="discover" class="discover-section">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-label">Discover Nobleparc</span>
+      <h2>Wellness That Fits Your Life</h2>
+      <p>Two devices. One purpose: to bring the spa experience home — without the appointment, the commute, or the premium price.</p>
+    </div>
+    <div class="discover-grid">
+      {{ $mask := .Site.GetPage "/products/red-light-therapy-mask" }}
+      {{ $massager := .Site.GetPage "/products/electric-scalp-massager" }}
+      {{ with $mask }}
+      <div class="discover-card">
+        <div class="discover-image">
+          <img src="/images/mask-hero-768w.webp" alt="{{ .Title }}" width="768" height="576" loading="lazy" decoding="async">
         </div>
-        <div class="product-card-info">
-          <div class="product-card-header">
-            <h3 class="product-card-title">{{ .Title }}</h3>
-            <div class="product-card-rating">
-              <span class="stars">★★★★★</span>
-              <span>4.9</span>
-            </div>
-          </div>
-          <p class="product-card-price">${{ .Params.price }} <span class="original">$129</span></p>
-          <p class="product-card-desc">{{ .Params.short_desc }}</p>
-          <span class="btn btn-primary product-card-cta">Shop Now →</span>
+        <div class="discover-info">
+          <span class="discover-category">Red Light Therapy</span>
+          <h3>{{ .Title }}</h3>
+          <p class="discover-desc">{{ .Params.short_desc }}</p>
+          <ul class="discover-highlights">
+            <li>180 medical-grade LEDs</li>
+            <li>4 clinically-studied wavelengths</li>
+            <li>Hands-free silicone design</li>
+          </ul>
+          <a href="{{ .RelPermalink }}" class="btn btn-outline">Explore the Mask →</a>
         </div>
-      </a>
-    </article>
-    {{ end }}
-    {{ with $massager }}
-    <article class="product-card">
-      <a href="{{ .RelPermalink }}" class="product-card-link">
-        <div class="product-card-image">
-          <img src="/images/massager-hero-card.webp" alt="Nobleparc Electric Scalp Massager" width="500" height="500" loading="lazy" decoding="async">
+      </div>
+      {{ end }}
+      {{ with $massager }}
+      <div class="discover-card">
+        <div class="discover-image">
+          <img src="/images/massager-hero-768w.webp" alt="{{ .Title }}" width="768" height="576" loading="lazy" decoding="async">
         </div>
-        <div class="product-card-info">
-          <div class="product-card-header">
-            <h3 class="product-card-title">{{ .Title }}</h3>
-            <div class="product-card-rating">
-              <span class="stars">★★★★★</span>
-              <span>4.8</span>
-            </div>
-          </div>
-          <p class="product-card-price">${{ .Params.price }} <span class="original">$69</span></p>
-          <p class="product-card-desc">{{ .Params.short_desc }}</p>
-          <span class="btn btn-primary product-card-cta">Shop Now →</span>
+        <div class="discover-info">
+          <span class="discover-category">Scalp Therapy</span>
+          <h3>{{ .Title }}</h3>
+          <p class="discover-desc">{{ .Params.short_desc }}</p>
+          <ul class="discover-highlights">
+            <li>8 deep-kneading massage nodes</li>
+            <li>3 adjustable intensity levels</li>
+            <li>Water-resistant design</li>
+          </ul>
+          <a href="{{ .RelPermalink }}" class="btn btn-outline">Explore the Massager →</a>
         </div>
-      </a>
-    </article>
-    {{ end }}
+      </div>
+      {{ end }}
+    </div>
   </div>
 </section>
 
-<!-- Authority Section: Why Nobleparc -->
+<!-- Why Nobleparc -->
 <section class="authority-section">
   <div class="container">
     <div class="section-title">
