@@ -22,12 +22,12 @@
       <div class="product-hero-image">
         <picture>
           <source srcset="
-            /images/product-{{ .Params.slug }}-480.svg 480w,
-            /images/product-{{ .Params.slug }}-768.svg 768w,
-            /images/product-{{ .Params.slug }}-1200.svg 1200w"
+            /images/{{ .Params.slug }}-hero-480w.webp 480w,
+            /images/{{ .Params.slug }}-hero-768w.webp 768w,
+            /images/{{ .Params.slug }}-hero-1200w.webp 1200w"
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 600px"
             type="image/webp">
-          <img src="/images/product-{{ .Params.slug }}-768.svg"
+          <img src="/images/{{ .Params.slug }}-hero-768w.webp"
                alt="{{ .Params.image_alt }}"
                width="768" height="768"
                decoding="async"
