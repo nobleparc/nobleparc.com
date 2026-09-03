@@ -16,22 +16,23 @@
     </ol>
   </nav>
 
-  <!-- Hero -->
-  <section class="product-hero container">
-    <div class="product-hero-grid">
-      <div class="product-hero-image">
+  <!-- Hero — clean product shot, full product visible, 4:3 -->
+  <section class="product-hero">
+    <div class="product-hero-grid container">
+      <div class="product-hero-visual">
         <picture>
           <source srcset="
-            /images/{{ .Params.slug }}-hero-480w.webp 480w,
-            /images/{{ .Params.slug }}-hero-768w.webp 768w,
-            /images/{{ .Params.slug }}-hero-1200w.webp 1200w"
+            /images/{{ .Params.slug }}-hero-hero-480w.webp 480w,
+            /images/{{ .Params.slug }}-hero-hero-768w.webp 768w,
+            /images/{{ .Params.slug }}-hero-hero-1200w.webp 1200w"
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 600px"
             type="image/webp">
-          <img src="/images/{{ .Params.slug }}-hero-768w.webp"
+          <img src="/images/{{ .Params.slug }}-hero-hero-768w.webp"
                alt="{{ .Params.image_alt }}"
-               width="768" height="768"
+               width="768" height="576"
                decoding="async"
-               fetchpriority="high">
+               fetchpriority="high"
+               class="product-hero-img">
         </picture>
       </div>
       <div class="product-hero-info">
@@ -68,9 +69,53 @@
     </div>
   </section>
 
+  <!-- Visual Gallery — narrative storytelling -->
+  <section class="product-gallery">
+    <div class="container">
+      <div class="gallery-grid">
+        <!-- Shot 1: Clean product detail -->
+        <div class="gallery-item gallery-item-wide">
+          <picture>
+            <source srcset="/images/{{ .Params.slug }}-hero-hero-768w.webp" type="image/webp">
+            <img src="/images/{{ .Params.slug }}-hero-hero-768w.webp" alt="{{ .Title }} — front view" loading="lazy" width="768" height="576">
+          </picture>
+          <div class="gallery-caption">
+            <span class="gallery-label">The Device</span>
+            <p>Premium materials, precision-engineered for your daily ritual.</p>
+          </div>
+        </div>
+        <!-- Shot 2: Lifestyle / in use -->
+        <div class="gallery-item">
+          <picture>
+            <source srcset="/images/{{ .Params.slug }}-lifestyle-hero-768w.webp" type="image/webp">
+            <img src="/images/{{ .Params.slug }}-lifestyle-hero-768w.webp" alt="{{ .Title }} — in use" loading="lazy" width="768" height="576" onerror="this.src='/images/{{ .Params.slug }}-hero-hero-768w.webp'">
+          </picture>
+          <div class="gallery-caption">
+            <span class="gallery-label">{{ if eq .Params.slug "mask" }}The Ritual{{ else }}The Experience{{ end }}</span>
+            <p>{{ if eq .Params.slug "mask" }}Just 10 minutes a day. Your moment of calm.{{ else }}Designed for daily relaxation, at home or in the shower.{{ end }}</p>
+          </div>
+        </div>
+        <!-- Shot 3: Detail / angle -->
+        <div class="gallery-item">
+          <picture>
+            <source srcset="/images/{{ .Params.slug }}-angle-hero-768w.webp" type="image/webp">
+            <img src="/images/{{ .Params.slug }}-angle-hero-768w.webp" alt="{{ .Title }} — detail view" loading="lazy" width="768" height="576" onerror="this.src='/images/{{ .Params.slug }}-hero-hero-768w.webp'">
+          </picture>
+          <div class="gallery-caption">
+            <span class="gallery-label">The Craft</span>
+            <p>Thoughtful design meets premium materials.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Benefits -->
   <section class="benefits-section container">
-    <h2>Key Benefits</h2>
+    <div class="section-title">
+      <span class="section-label">Key Benefits</span>
+      <h2>Why You'll Love It</h2>
+    </div>
     <ul class="benefits-list">
       {{ range .Params.benefits }}
       <li>{{ . }}</li>
@@ -110,7 +155,7 @@
   </section>
   {{ end }}
 
-  <!-- Testimonials (placeholders) -->
+  <!-- Testimonials -->
   {{ if .Params.testimonials }}
   <section class="testimonials-section container">
     <h2>What Our Customers Say</h2>

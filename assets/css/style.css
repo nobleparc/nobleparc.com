@@ -240,8 +240,8 @@ p{margin-bottom:var(--md)}
   position:relative;overflow:hidden;
   background:var(--gray-100);
 }
-.product-card-image img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .4s ease}
-.product-card:hover .product-card-image img{transform:scale(1.05)}
+.product-card-image img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s ease}
+.product-card:hover .product-card-image img{transform:scale(1.04)}
 
 .product-card-info{padding:var(--lg);flex:1;display:flex;flex-direction:column}
 .product-card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:var(--sm)}
@@ -294,13 +294,14 @@ p{margin-bottom:var(--md)}
 
 /* === PRODUCT PAGE === */
 .product-page{padding-bottom:var(--xxl)}
-.product-hero{padding:var(--xl) 0}
+.product-hero{padding:var(--xl) 0;background:var(--white)}
 .product-hero-grid{display:grid;gap:var(--xl)}
-.product-hero-image{
-  border-radius:var(--radius-xl);overflow:hidden;
-  background:var(--gray-100);position:relative;
+.product-hero-visual{
+  border-radius:var(--radius-lg);overflow:hidden;
+  background:var(--gray-50);position:relative;
+  box-shadow:var(--shadow-sm);
 }
-.product-hero-image img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.product-hero-img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover}
 .product-price-display{font-size:40px;font-weight:800;color:var(--accent2);margin-bottom:var(--md);letter-spacing:-1px}
 .product-short-desc{font-size:var(--fs-lg);color:var(--gray-500);margin-bottom:var(--md);line-height:1.6}
 .product-bullets{list-style:none;padding:0;margin-bottom:var(--lg)}
@@ -314,6 +315,27 @@ p{margin-bottom:var(--md)}
 }
 .free-shipping-note{margin-top:var(--md);color:var(--success);font-weight:600;font-size:var(--fs-sm)}
 .shipping-timeframe{margin-top:var(--xs);color:var(--gray-400);font-size:var(--fs-sm)}
+
+/* === GALLERY NARRATIVE === */
+.product-gallery{padding:var(--xxl) 0;background:var(--bg)}
+.gallery-grid{display:grid;gap:var(--lg)}
+.gallery-item{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  background:var(--white);box-shadow:var(--shadow-sm);
+}
+.gallery-item img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;transition:transform .4s ease}
+.gallery-item:hover img{transform:scale(1.02)}
+.gallery-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:var(--lg) var(--md);
+  background:linear-gradient(transparent,rgba(15,23,42,.7));
+  color:var(--white);
+}
+.gallery-label{
+  display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:4px;opacity:.8;
+}
+.gallery-caption p{font-size:14px;margin:0;opacity:.9;line-height:1.4}@media(min-width:768px){.gallery-grid{grid-template-columns:1fr 1fr}.gallery-item-wide{grid-column:1/-1}}
 
 /* === BENEFITS === */
 .benefits-section,.specs-section,.faq-section,.testimonials-section{padding:var(--xl) 0}
