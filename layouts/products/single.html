@@ -3,101 +3,60 @@
 {{ $slug := .Params.slug }}
 <article class="product-cinematic">
 
-  <!-- CHAPTER 1: HERO -->
   <section class="p-hero">
     {{ if eq $slug "massager" }}
-    <img src="/images/massager-hero-real-1200w.webp" alt="{{ .Params.image_alt }}" width="1200" height="900" fetchpriority="high" class="p-hero-bg">
+    <img src="/images/massager-product-1.jpg" alt="{{ .Params.image_alt }}" width="1600" height="1600" fetchpriority="high" class="p-hero-bg">
     {{ else }}
-    <img src="/images/mask-hero-real-1200w.webp" alt="{{ .Params.image_alt }}" width="1200" height="900" fetchpriority="high" class="p-hero-bg">
+    <img src="/images/mask-product-3.jpg" alt="{{ .Params.image_alt }}" width="1000" height="1000" fetchpriority="high" class="p-hero-bg">
     {{ end }}
     <div class="p-hero-overlay">
       <div class="p-hero-text">
         <span class="p-hero-eyebrow">{{ if eq $slug "mask" }}Red Light Therapy{{ else }}Scalp Therapy{{ end }}</span>
         <h1 class="p-hero-title">{{ .Title }}</h1>
         <p class="p-hero-desc">{{ .Params.short_desc }}</p>
-        <div class="p-hero-usp">
-          {{ range .Params.bullets }}
-          <span class="p-hero-usp-item">{{ . }}</span>
-          {{ end }}
-        </div>
+        <div class="p-hero-usp">{{ range .Params.bullets }}<span class="p-hero-usp-item">{{ . }}</span>{{ end }}</div>
         <a href="#p-story" class="p-hero-scroll">Continue the story <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
       </div>
     </div>
   </section>
 
-  <!-- CHAPTER 2: THE STORY -->
   <section class="p-chapter" id="p-story">
     <div class="chapter-media">
-      {{ if eq $slug "massager" }}
-      <img src="/images/massager-hero-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-      {{ else }}
-      <img src="/images/mask-hero-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-      {{ end }}
+      {{ if eq $slug "massager" }}<img src="/images/massager-product-1.jpg" alt="{{ .Title }}" width="1600" height="1600" loading="lazy">{{ else }}<img src="/images/mask-product-3.jpg" alt="{{ .Title }}" width="1000" height="1000" loading="lazy">{{ end }}
     </div>
     <div class="chapter-text">
       <span class="chapter-label">The Story</span>
       <h2>{{ if eq $slug "mask" }}Your Skin's Daily Recharge{{ else }}Tension Relief, One Session at a Time{{ end }}</h2>
-      <p>{{ if eq $slug "mask" }}
-        Red light therapy isn't a luxury — it's a daily practice. The same clinically-studied technology trusted by wellness professionals is now available in a device that fits seamlessly into your evening routine. No appointments, no commute, no clinic prices.
-        {{ else }}
-        Modern life lives in your shoulders and scalp. The Nobleparc Electric Scalp Massager is designed to melt away the tension of a long day with gentle, invigorating kneading that mimics the hands of a professional masseuse.
-        {{ end }}</p>
+      <p>{{ if eq $slug "mask" }}Red light therapy isn't a luxury — it's a daily practice. The same clinically-studied technology trusted by wellness professionals is now available in a device that fits seamlessly into your evening routine. No appointments, no commute, no clinic prices.{{ else }}Modern life lives in your shoulders and scalp. The Nobleparc Electric Scalp Massager is designed to melt away the tension of a long day with gentle, invigorating kneading that mimics the hands of a professional masseuse.{{ end }}</p>
     </div>
   </section>
 
-  <!-- CHAPTER 3: THE RITUAL — 3 unique images, no duplicates -->
   <section class="p-chapter">
-    <div class="chapter-text">
-      <span class="chapter-label">The Ritual</span>
-      <h2>10 Minutes of Me-Time</h2>
-    </div>
+    <div class="chapter-text"><span class="chapter-label">The Ritual</span><h2>10 Minutes of Me-Time</h2></div>
     <div class="ritual-cinematic">
       <div class="ritual-scene">
-        {{ if eq $slug "massager" }}<img src="/images/massager-hero-real-768w.webp" alt="{{ .Title }} — prepare" width="768" height="576" loading="lazy">{{ else }}<img src="/images/mask-hero-real-768w.webp" alt="{{ .Title }} — prepare" width="768" height="576" loading="lazy">{{ end }}
-        <div class="ritual-caption">
-          <span class="ritual-num">01</span>
-          <h3>Prepare</h3>
-          <p>Start with clean, dry skin. Find your comfortable spot — your favorite chair, the sofa, or your bed.</p>
-        </div>
+        {{ if eq $slug "massager" }}<img src="/images/massager-product-1.jpg" alt="{{ .Title }} — prepare" width="1600" height="1600" loading="lazy">{{ else }}<img src="/images/mask-product-3.jpg" alt="{{ .Title }} — prepare" width="1000" height="1000" loading="lazy">{{ end }}
+        <div class="ritual-caption"><span class="ritual-num">01</span><h3>Prepare</h3><p>Start with clean, dry skin. Find your comfortable spot.</p></div>
       </div>
       <div class="ritual-scene">
-        {{ if eq $slug "massager" }}<img src="/images/massager-angle-real-768w.webp" alt="{{ .Title }} — relax" width="768" height="576" loading="lazy">{{ else }}<img src="/images/mask-angle-real-768w.webp" alt="{{ .Title }} — relax" width="768" height="576" loading="lazy">{{ end }}
-        <div class="ritual-caption">
-          <span class="ritual-num">02</span>
-          <h3>Relax</h3>
-          <p>{{ if eq $slug "mask" }}Put on your mask and press start. Close your eyes, breathe deeply, and let the gentle warmth work.{{ else }}Choose your intensity level. Close your eyes and let the kneading nodes melt away the day's tension.{{ end }}</p>
-        </div>
+        {{ if eq $slug "massager" }}<img src="/images/massager-product-4.jpg" alt="{{ .Title }} — relax" width="1600" height="1600" loading="lazy">{{ else }}<img src="/images/mask-product-8.jpg" alt="{{ .Title }} — relax" width="1000" height="1000" loading="lazy">{{ end }}
+        <div class="ritual-caption"><span class="ritual-num">02</span><h3>Relax</h3><p>{{ if eq $slug "mask" }}Put on your mask and press start. Close your eyes and breathe deeply.{{ else }}Choose your intensity level. Let the kneading nodes melt away the tension.{{ end }}</p></div>
       </div>
       <div class="ritual-scene">
-        {{ if eq $slug "massager" }}<img src="/images/massager-detail-real-768w.webp" alt="{{ .Title }} — restore" width="768" height="576" loading="lazy">{{ else }}<img src="/images/mask-purchase-real-768w.webp" alt="{{ .Title }} — restore" width="768" height="576" loading="lazy">{{ end }}
-        <div class="ritual-caption">
-          <span class="ritual-num">03</span>
-          <h3>Restore</h3>
-          <p>{{ if eq $slug "mask" }}After 10 minutes, the mask shuts off automatically. Remove, continue with your evening skincare, and sleep well.{{ else }}After 10-15 minutes, rinse and store. Your scalp feels renewed, your mind clearer.{{ end }}</p>
-        </div>
+        {{ if eq $slug "massager" }}<img src="/images/massager-product-1.jpg" alt="{{ .Title }} — restore" width="1600" height="1600" loading="lazy">{{ else }}<img src="/images/mask-product-3.jpg" alt="{{ .Title }} — restore" width="1000" height="1000" loading="lazy">{{ end }}
+        <div class="ritual-caption"><span class="ritual-num">03</span><h3>Restore</h3><p>{{ if eq $slug "mask" }}After 10 minutes the mask shuts off automatically. Sleep well.{{ else }}Rinse and store. Your scalp feels renewed, your mind clearer.{{ end }}</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CHAPTER 4: PURCHASE -->
   <section class="p-chapter chapter-purchase" id="p-purchase">
-    <div class="chapter-media">
-      {{ if eq $slug "massager" }}
-      <img src="/images/massager-hero-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-      {{ else }}
-      <img src="/images/mask-purchase-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-      {{ end }}
-    </div>
+    <div class="chapter-media">{{ if eq $slug "massager" }}<img src="/images/massager-product-1.jpg" alt="{{ .Title }}" width="1600" height="1600" loading="lazy">{{ else }}<img src="/images/mask-product-6.jpg" alt="{{ .Title }}" width="800" height="800" loading="lazy">{{ end }}</div>
     <div class="chapter-text chapter-cta-text">
       <span class="chapter-label">Begin Your Ritual</span>
       <h2>{{ .Title }}</h2>
       <p class="purchase-price">${{ .Params.price }}</p>
       <p class="purchase-desc">{{ .Params.short_desc }}</p>
-      <div class="purchase-seals">
-        <span>Free US Shipping</span>
-        <span>30-Day Guarantee</span>
-        <span>2-Year Warranty</span>
-      </div>
+      <div class="purchase-seals"><span>Free US Shipping</span><span>30-Day Guarantee</span><span>2-Year Warranty</span></div>
       {{ if .Site.Params.paypalEmail }}
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form-inline">
         <input type="hidden" name="cmd" value="_xclick">
@@ -109,99 +68,42 @@
         <input type="hidden" name="return" value="https://nobleparc.com/confirmation/">
         <input type="hidden" name="cancel_return" value="https://nobleparc.com/">
         <input type="hidden" name="lc" value="US">
-        <button type="submit" class="btn btn-primary btn-purchase">
-          <span class="btn-purchase-label">Begin Your Ritual</span>
-          <span class="btn-purchase-price">${{ .Params.price }}</span>
-        </button>
+        <button type="submit" class="btn btn-primary btn-purchase"><span class="btn-purchase-label">Begin Your Ritual</span> <span class="btn-purchase-price">${{ .Params.price }}</span></button>
       </form>
       {{ end }}
       <p class="purchase-note">Free tracked US shipping — {{ .Params.shipping_days | default "3-7" }} business days.</p>
     </div>
   </section>
 
-  <!-- CHAPTER 5: THE DETAILS -->
   <section class="p-chapter chapter-details">
-    <div class="chapter-media">
-      {{ if eq $slug "massager" }}
-      <img src="/images/massager-detail-real-1200w.webp" alt="{{ .Title }} — detail view" width="1200" height="900" loading="lazy">
-      {{ else }}
-      <img src="/images/mask-detail-real-1200w.webp" alt="{{ .Title }} — detail view" width="1200" height="900" loading="lazy">
-      {{ end }}
-    </div>
+    <div class="chapter-media">{{ if eq $slug "massager" }}<img src="/images/massager-product-3.jpg" alt="{{ .Title }} — detail view" width="1600" height="1600" loading="lazy">{{ else }}<img src="/images/mask-product-4.jpg" alt="{{ .Title }} — detail view" width="800" height="800" loading="lazy">{{ end }}</div>
     <div class="chapter-text">
       <span class="chapter-label">The Details</span>
       <h2>Carefully Engineered</h2>
-      <p>A closer look at what makes this device different — the materials, the engineering, the wavelengths that matter.</p>
-      <div class="specs-panel">
-        {{ range .Params.specs }}
-        <div class="spec-row">
-          <span class="spec-label">{{ .label }}</span>
-          <span class="spec-value">{{ .value }}</span>
-        </div>
-        {{ end }}
-      </div>
+      <p>A closer look at what makes this device different.</p>
+      <div class="specs-panel">{{ range .Params.specs }}<div class="spec-row"><span class="spec-label">{{ .label }}</span><span class="spec-value">{{ .value }}</span></div>{{ end }}</div>
     </div>
   </section>
 
-  <!-- CHAPTER 6: WHAT'S IN THE BOX -->
   <section class="p-chapter chapter-box">
-    <div class="chapter-media">
-      {{ if eq $slug "massager" }}
-      <img src="/images/massager-angle-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-      {{ else }}
-      <img src="/images/mask-angle-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-      {{ end }}
-    </div>
+    <div class="chapter-media">{{ if eq $slug "massager" }}<img src="/images/massager-product-2.jpg" alt="{{ .Title }}" width="1600" height="1600" loading="lazy">{{ else }}<img src="/images/mask-product-7.jpg" alt="{{ .Title }}" width="800" height="800" loading="lazy">{{ end }}</div>
     <div class="chapter-text">
       <span class="chapter-label">What's Included</span>
       <h2>Everything You Need</h2>
-      <ul class="box-list-chapter">
-        <li>{{ .Title }} unit</li>
-        <li>USB-C charging cable</li>
-        <li>Travel pouch</li>
-        <li>Quick-start guide</li>
-        <li>2-year limited warranty</li>
-      </ul>
+      <ul class="box-list-chapter"><li>{{ .Title }} unit</li><li>USB-C charging cable</li><li>Travel pouch</li><li>Quick-start guide</li><li>2-year limited warranty</li></ul>
     </div>
   </section>
 
-  <!-- CHAPTER 7: FAQ -->
   {{ if $faq }}
   <section class="p-chapter chapter-faq" itemscope itemtype="https://schema.org/FAQPage">
     <div class="chapter-text">
       <span class="chapter-label">FAQ</span>
       <h2>Frequently Asked Questions</h2>
-      <div class="faq-chapter-list">
-        {{ range $faq }}
-        <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <button class="faq-question" aria-expanded="false" itemprop="name">{{ .question }}</button>
-          <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text">{{ .answer | safeHTML }}</div>
-          </div>
-        </div>
-        {{ end }}
-      </div>
+      <div class="faq-chapter-list">{{ range $faq }}<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" aria-expanded="false" itemprop="name">{{ .question }}</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">{{ .answer | safeHTML }}</div></div></div>{{ end }}</div>
     </div>
   </section>
   {{ end }}
 </article>
 
-<div class="mobile-purchase-bar">
-  {{ if .Site.Params.paypalEmail }}
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form-inline">
-    <input type="hidden" name="cmd" value="_xclick">
-    <input type="hidden" name="business" value="{{ .Site.Params.paypalEmail }}">
-    <input type="hidden" name="item_name" value="{{ .Title }}">
-    <input type="hidden" name="amount" value="{{ printf "%.2f" (float .Params.price) }}">
-    <input type="hidden" name="currency_code" value="USD">
-    <input type="hidden" name="no_shipping" value="2">
-    <input type="hidden" name="return" value="https://nobleparc.com/confirmation/">
-    <input type="hidden" name="cancel_return" value="https://nobleparc.com/">
-    <input type="hidden" name="lc" value="US">
-    <button type="submit" class="btn btn-primary">
-      Begin Your Ritual — ${{ .Params.price }}
-    </button>
-  </form>
-  {{ end }}
-</div>
+<div class="mobile-purchase-bar">{{ if .Site.Params.paypalEmail }}<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form-inline"><input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="{{ .Site.Params.paypalEmail }}"><input type="hidden" name="item_name" value="{{ .Title }}"><input type="hidden" name="amount" value="{{ printf "%.2f" (float .Params.price) }}"><input type="hidden" name="currency_code" value="USD"><input type="hidden" name="no_shipping" value="2"><input type="hidden" name="return" value="https://nobleparc.com/confirmation/"><input type="hidden" name="cancel_return" value="https://nobleparc.com/"><input type="hidden" name="lc" value="US"><button type="submit" class="btn btn-primary">Begin Your Ritual — ${{ .Params.price }}</button></form>{{ end }}</div>
 {{ end }}
