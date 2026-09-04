@@ -1,11 +1,14 @@
 {{ define "main" }}
 {{ $faq := .Params.faq_items }}
 {{ $slug := .Params.slug }}
-{{ $hero := cond (eq $slug "massager") "massager-hero-real" "mask-hero-real" }}
-{{ $angle := cond (eq $slug "massager") "massager-angle-real" "mask-angle-real" }}
-{{ $detail := cond (eq $slug "massager") "massager-angle-real" "mask-detail-real" }}
-{{ $purchase := cond (eq $slug "massager") "massager-hero-real" "mask-hero-real" }}
-{{ $box := cond (eq $slug "massager") "massager-angle-real" "mask-angle-real" }}
+{{ $hero := cond (eq $slug "massager") "chair" "sofa" }}
+{{ $story := cond (eq $slug "massager") "bathtub" "golden" }}
+{{ $ritual1 := cond (eq $slug "massager") "desk" "bedroom" }}
+{{ $ritual2 := cond (eq $slug "massager") "bathtub" "bathroom" }}
+{{ $ritual3 := cond (eq $slug "massager") "chair" "chair" }}
+{{ $detail := "detail" }}
+{{ $box := "desk" }}
+{{ $purchase := cond (eq $slug "massager") "shelf" "purchase" }}
 <article class="product-cinematic">
 
   <!-- CHAPTER 1: HERO — aspirational, no price, no buy -->
@@ -36,11 +39,11 @@
   <section class="p-chapter" id="p-story">
     <div class="chapter-media">
       <picture>
-        <source srcset="/images/{{ $hero }}-480w.webp 480w,
-                        /images/{{ $hero }}-768w.webp 768w,
-                        /images/{{ $hero }}-1200w.webp 1200w"
+        <source srcset="/images/{{ $story }}-480w.webp 480w,
+                        /images/{{ $story }}-768w.webp 768w,
+                        /images/{{ $story }}-1200w.webp 1200w"
                 sizes="100vw" type="image/webp">
-        <img src="/images/{{ $hero }}-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
+        <img src="/images/{{ $story }}-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
       </picture>
     </div>
     <div class="chapter-text">
@@ -62,7 +65,7 @@
     </div>
     <div class="ritual-cinematic">
       <div class="ritual-scene">
-        <img src="/images/{{ $hero }}-768w.webp" alt="{{ .Title }} — prepare" width="768" height="576" loading="lazy">
+        <img src="/images/{{ $ritual1 }}-768w.webp" alt="{{ .Title }} — prepare" width="768" height="576" loading="lazy">
         <div class="ritual-caption">
           <span class="ritual-num">01</span>
           <h3>Prepare</h3>
@@ -70,7 +73,7 @@
         </div>
       </div>
       <div class="ritual-scene">
-        <img src="/images/{{ $angle }}-768w.webp" alt="{{ .Title }} — relax" width="768" height="576" loading="lazy">
+        <img src="/images/{{ $ritual2 }}-768w.webp" alt="{{ .Title }} — relax" width="768" height="576" loading="lazy">
         <div class="ritual-caption">
           <span class="ritual-num">02</span>
           <h3>Relax</h3>
@@ -78,7 +81,7 @@
         </div>
       </div>
       <div class="ritual-scene">
-        <img src="/images/{{ $hero }}-768w.webp" alt="{{ .Title }} — restore" width="768" height="576" loading="lazy">
+        <img src="/images/{{ $ritual3 }}-768w.webp" alt="{{ .Title }} — restore" width="768" height="576" loading="lazy">
         <div class="ritual-caption">
           <span class="ritual-num">03</span>
           <h3>Restore</h3>
