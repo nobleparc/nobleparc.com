@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section class="hero-aspirational">
   <div class="hero-frame">
-    <img src="/images/mask-product-3.jpg" alt="Nobleparc premium LED face mask" width="1000" height="1000" fetchpriority="high" class="hero-bg-img">
+    <img src="/images/mask-hero-1200w.webp" alt="Nobleparc premium LED face mask on linen" width="1200" height="900" fetchpriority="high" class="hero-bg-img">
     <div class="hero-sigil">
       <span class="hero-brand">Nobleparc</span>
       <span class="hero-tagline">Wellness that feels like home</span>
@@ -20,22 +20,22 @@
       {{ $mask := .Site.GetPage "/products/red-light-therapy-mask" }}{{ $massager := .Site.GetPage "/products/electric-scalp-massager" }}
       {{ with $mask }}
       <div class="showcase-item">
-        <div class="showcase-visual"><img src="/images/mask-product-3.jpg" alt="{{ .Title }}" width="1000" height="1000" loading="lazy"></div>
+        <div class="showcase-visual"><img src="/images/mask-hero-768w.webp" alt="{{ .Title }}" width="768" height="576" loading="lazy"></div>
         <div class="showcase-info">
           <span class="showcase-category">Red Light Therapy</span><h3>{{ .Title }}</h3>
           <p class="showcase-price">${{ .Params.price }}</p>
-          <p class="showcase-desc">{{ .Params.short_desc }}</p>
+          <p class="showcase-desc">A daily practice in radiance. Four clinically-studied wavelengths, 180 medical-grade LEDs, and a hands-free silicone design — your evening routine, elevated.</p>
           <a href="{{ .RelPermalink }}" class="showcase-link">Discover more <span class="showcase-arrow">→</span></a>
         </div>
       </div>
       {{ end }}
       {{ with $massager }}
       <div class="showcase-item">
-        <div class="showcase-visual"><img src="/images/massager-product-1.jpg" alt="{{ .Title }}" width="1600" height="1600" loading="lazy"></div>
+        <div class="showcase-visual"><img src="/images/massager-hero-768w.webp" alt="{{ .Title }}" width="768" height="576" loading="lazy"></div>
         <div class="showcase-info">
           <span class="showcase-category">Scalp Therapy</span><h3>{{ .Title }}</h3>
           <p class="showcase-price">${{ .Params.price }}</p>
-          <p class="showcase-desc">{{ .Params.short_desc }}</p>
+          <p class="showcase-desc">Eight deep-kneading nodes, three intensity levels, water-resistant design. Tension relief that fits into your shower or your desk drawer.</p>
           <a href="{{ .RelPermalink }}" class="showcase-link">Discover more <span class="showcase-arrow">→</span></a>
         </div>
       </div>
@@ -56,13 +56,13 @@
 
 <section class="ritual-preview">
   <div class="ritual-preview-inner">
-    <div class="ritual-preview-media"><img src="/images/mask-product-6.jpg" alt="Nobleparc wellness device in use" width="800" height="800" loading="lazy"></div>
+    <div class="ritual-preview-media"><img src="/images/mask-purchase-768w.webp" alt="Nobleparc wellness ritual at home" width="768" height="576" loading="lazy"></div>
     <div class="ritual-preview-content">
       <span class="ritual-preview-eyebrow">The Ritual</span>
       <h2>10 minutes of me-time</h2>
-      <p>Consistency is the secret. Most users incorporate their device into an existing routine — morning coffee, evening skincare, or a mid-day pause. Three simple steps.</p>
+      <p>Consistency is the secret. Most users incorporate their device into an existing routine — morning coffee, evening skincare, or a mid-day pause. Three simple steps, one moment of calm.</p>
       <div class="ritual-preview-steps">
-        <div class="rstep"><span class="rstep-num">01</span><div><strong>Prepare</strong><p>Find your comfortable spot.</p></div></div>
+        <div class="rstep"><span class="rstep-num">01</span><div><strong>Prepare</strong><p>Find your comfortable spot. Light a candle or sit in silence.</p></div></div>
         <div class="rstep"><span class="rstep-num">02</span><div><strong>Relax</strong><p>Close your eyes. Let the device work for 10–15 minutes.</p></div></div>
         <div class="rstep"><span class="rstep-num">03</span><div><strong>Restore</strong><p>Feel renewed. Continue your evening.</p></div></div>
       </div>
