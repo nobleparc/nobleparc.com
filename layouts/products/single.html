@@ -9,16 +9,17 @@
 {{ $detail := "detail" }}
 {{ $box := "desk" }}
 {{ $purchase := cond (eq $slug "massager") "shelf" "purchase" }}
+{{ $img := print $slug "-" }}
 <article class="product-cinematic">
 
-  <!-- CHAPTER 1: HERO — aspirational, no price, no buy -->
+  <!-- CHAPTER 1: HERO -->
   <section class="p-hero">
     <picture>
-      <source srcset="/images/{{ $hero }}-480w.webp 480w,
-                      /images/{{ $hero }}-768w.webp 768w,
-                      /images/{{ $hero }}-1200w.webp 1200w"
+      <source srcset="/images/{{ $img }}{{ $hero }}-480w.webp 480w,
+                      /images/{{ $img }}{{ $hero }}-768w.webp 768w,
+                      /images/{{ $img }}{{ $hero }}-1200w.webp 1200w"
               sizes="100vw" type="image/webp">
-      <img src="/images/{{ $hero }}-1200w.webp" alt="{{ .Params.image_alt }}" width="1200" height="900" fetchpriority="high" class="p-hero-bg">
+      <img src="/images/{{ $img }}{{ $hero }}-1200w.webp" alt="{{ .Params.image_alt }}" width="1200" height="900" fetchpriority="high" class="p-hero-bg">
     </picture>
     <div class="p-hero-overlay">
       <div class="p-hero-text">
@@ -39,11 +40,11 @@
   <section class="p-chapter" id="p-story">
     <div class="chapter-media">
       <picture>
-        <source srcset="/images/{{ $story }}-480w.webp 480w,
-                        /images/{{ $story }}-768w.webp 768w,
-                        /images/{{ $story }}-1200w.webp 1200w"
+        <source srcset="/images/{{ $img }}{{ $story }}-480w.webp 480w,
+                        /images/{{ $img }}{{ $story }}-768w.webp 768w,
+                        /images/{{ $img }}{{ $story }}-1200w.webp 1200w"
                 sizes="100vw" type="image/webp">
-        <img src="/images/{{ $story }}-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
+        <img src="/images/{{ $img }}{{ $story }}-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
       </picture>
     </div>
     <div class="chapter-text">
@@ -57,7 +58,7 @@
     </div>
   </section>
 
-  <!-- CHAPTER 3: THE RITUAL — cinematic sequence -->
+  <!-- CHAPTER 3: THE RITUAL -->
   <section class="p-chapter">
     <div class="chapter-text">
       <span class="chapter-label">The Ritual</span>
@@ -65,7 +66,7 @@
     </div>
     <div class="ritual-cinematic">
       <div class="ritual-scene">
-        <img src="/images/{{ $ritual1 }}-768w.webp" alt="{{ .Title }} — prepare" width="768" height="576" loading="lazy">
+        <img src="/images/{{ $img }}{{ $ritual1 }}-768w.webp" alt="{{ .Title }} — prepare" width="768" height="576" loading="lazy">
         <div class="ritual-caption">
           <span class="ritual-num">01</span>
           <h3>Prepare</h3>
@@ -73,7 +74,7 @@
         </div>
       </div>
       <div class="ritual-scene">
-        <img src="/images/{{ $ritual2 }}-768w.webp" alt="{{ .Title }} — relax" width="768" height="576" loading="lazy">
+        <img src="/images/{{ $img }}{{ $ritual2 }}-768w.webp" alt="{{ .Title }} — relax" width="768" height="576" loading="lazy">
         <div class="ritual-caption">
           <span class="ritual-num">02</span>
           <h3>Relax</h3>
@@ -81,7 +82,7 @@
         </div>
       </div>
       <div class="ritual-scene">
-        <img src="/images/{{ $ritual3 }}-768w.webp" alt="{{ .Title }} — restore" width="768" height="576" loading="lazy">
+        <img src="/images/{{ $img }}{{ $ritual3 }}-768w.webp" alt="{{ .Title }} — restore" width="768" height="576" loading="lazy">
         <div class="ritual-caption">
           <span class="ritual-num">03</span>
           <h3>Restore</h3>
@@ -91,15 +92,15 @@
     </div>
   </section>
 
-  <!-- CHAPTER 4: PURCHASE — arrives mid-narrative, natural desire conclusion -->
+  <!-- CHAPTER 4: PURCHASE -->
   <section class="p-chapter chapter-purchase" id="p-purchase">
     <div class="chapter-media">
       <picture>
-        <source srcset="/images/{{ $purchase }}-480w.webp 480w,
-                        /images/{{ $purchase }}-768w.webp 768w,
-                        /images/{{ $purchase }}-1200w.webp 1200w"
+        <source srcset="/images/{{ $img }}{{ $purchase }}-480w.webp 480w,
+                        /images/{{ $img }}{{ $purchase }}-768w.webp 768w,
+                        /images/{{ $img }}{{ $purchase }}-1200w.webp 1200w"
                 sizes="100vw" type="image/webp">
-        <img src="/images/{{ $purchase }}-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
+        <img src="/images/{{ $img }}{{ $purchase }}-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
       </picture>
     </div>
     <div class="chapter-text chapter-cta-text">
@@ -133,15 +134,15 @@
     </div>
   </section>
 
-  <!-- CHAPTER 5: THE DETAILS — technical specs come AFTER purchase, for those who need quality reassurance -->
+  <!-- CHAPTER 5: THE DETAILS -->
   <section class="p-chapter chapter-details">
     <div class="chapter-media">
       <picture>
-        <source srcset="/images/{{ $detail }}-480w.webp 480w,
-                        /images/{{ $detail }}-768w.webp 768w,
-                        /images/{{ $detail }}-1200w.webp 1200w"
+        <source srcset="/images/{{ $img }}{{ $detail }}-480w.webp 480w,
+                        /images/{{ $img }}{{ $detail }}-768w.webp 768w,
+                        /images/{{ $img }}{{ $detail }}-1200w.webp 1200w"
                 sizes="100vw" type="image/webp">
-        <img src="/images/{{ $detail }}-1200w.webp" alt="{{ .Title }} — detail view" width="1200" height="900" loading="lazy">
+        <img src="/images/{{ $img }}{{ $detail }}-1200w.webp" alt="{{ .Title }} — detail view" width="1200" height="900" loading="lazy">
       </picture>
     </div>
     <div class="chapter-text">
@@ -163,11 +164,11 @@
   <section class="p-chapter chapter-box">
     <div class="chapter-media">
       <picture>
-        <source srcset="/images/{{ $box }}-480w.webp 480w,
-                        /images/{{ $box }}-768w.webp 768w,
-                        /images/{{ $box }}-1200w.webp 1200w"
+        <source srcset="/images/{{ $img }}{{ $box }}-480w.webp 480w,
+                        /images/{{ $img }}{{ $box }}-768w.webp 768w,
+                        /images/{{ $img }}{{ $box }}-1200w.webp 1200w"
                 sizes="100vw" type="image/webp">
-        <img src="/images/{{ $box }}-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
+        <img src="/images/{{ $img }}{{ $box }}-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
       </picture>
     </div>
     <div class="chapter-text">
