@@ -1,14 +1,7 @@
 {{ define "main" }}
-<!-- HERO -->
 <section class="hero-aspirational">
   <div class="hero-frame">
-    <picture>
-      <source srcset="/images/mask-hero-real-480w.webp 480w,
-                      /images/mask-hero-real-768w.webp 768w,
-                      /images/mask-hero-real-1200w.webp 1200w"
-              sizes="100vw" type="image/webp">
-      <img src="/images/mask-hero-real-1200w.webp" alt="Nobleparc premium LED face mask — professional-grade wellness for your home ritual" width="1200" height="900" fetchpriority="high" class="hero-bg-img">
-    </picture>
+    <img src="/images/mask-product-3.jpg" alt="Nobleparc premium LED face mask — professional-grade wellness for your home ritual" width="1000" height="1000" fetchpriority="high" class="hero-bg-img">
     <div class="hero-sigil">
       <span class="hero-brand">Nobleparc</span>
       <span class="hero-tagline">Wellness that feels like home</span>
@@ -16,7 +9,6 @@
   </div>
 </section>
 
-<!-- SHOWCASE -->
 <section class="showcase">
   <div class="showcase-inner">
     <div class="showcase-header">
@@ -32,7 +24,7 @@
       {{ with $mask }}
       <div class="showcase-item">
         <div class="showcase-visual">
-          <img src="/images/mask-hero-real-768w.webp" alt="{{ .Title }} — premium LED face mask for home wellness" width="768" height="576" loading="lazy">
+          <img src="/images/mask-product-3.jpg" alt="{{ .Title }} — premium LED face mask" width="1000" height="1000" loading="lazy">
         </div>
         <div class="showcase-info">
           <span class="showcase-category">Red Light Therapy</span>
@@ -47,7 +39,7 @@
       {{ with $massager }}
       <div class="showcase-item">
         <div class="showcase-visual">
-          <img src="/images/massager-hero-real-768w.webp" alt="{{ .Title }} — premium electric scalp massager for daily relaxation" width="768" height="576" loading="lazy">
+          <img src="/images/massager-product-1.jpg" alt="{{ .Title }} — premium electric scalp massager" width="1600" height="1600" loading="lazy">
         </div>
         <div class="showcase-info">
           <span class="showcase-category">Scalp Therapy</span>
@@ -62,58 +54,29 @@
   </div>
 </section>
 
-<!-- VALUES -->
 <section class="values-cloud">
   <div class="values-cloud-inner">
     <div class="values-list">
-      <div class="value-pill">
-        <span class="value-mark">✦</span>
-        <span>Clinically-studied wavelengths — 630nm to 850nm</span>
-      </div>
-      <div class="value-pill">
-        <span class="value-mark">✦</span>
-        <span>Premium materials · Medical-grade silicone</span>
-      </div>
-      <div class="value-pill">
-        <span class="value-mark">✦</span>
-        <span>Free US shipping · 30-day guarantee · 2-year warranty</span>
-      </div>
+      <div class="value-pill"><span class="value-mark">✦</span><span>Clinically-studied wavelengths — 630nm to 850nm</span></div>
+      <div class="value-pill"><span class="value-mark">✦</span><span>Premium materials · Medical-grade silicone</span></div>
+      <div class="value-pill"><span class="value-mark">✦</span><span>Free US shipping · 30-day guarantee · 2-year warranty</span></div>
     </div>
   </div>
 </section>
 
-<!-- RITUAL PREVIEW -->
 <section class="ritual-preview">
   <div class="ritual-preview-inner">
     <div class="ritual-preview-media">
-      <img src="/images/mask-hero-real-768w.webp" alt="Nobleparc wellness device in a warm home setting" width="768" height="576" loading="lazy">
+      <img src="/images/mask-product-6.jpg" alt="Nobleparc wellness device in use" width="1000" height="1000" loading="lazy">
     </div>
     <div class="ritual-preview-content">
       <span class="ritual-preview-eyebrow">The Ritual</span>
       <h2>10 minutes of me-time</h2>
       <p>Consistency is the secret. Most users incorporate their device into an existing routine — morning coffee, evening skincare, or a mid-day pause. Three simple steps.</p>
       <div class="ritual-preview-steps">
-        <div class="rstep">
-          <span class="rstep-num">01</span>
-          <div>
-            <strong>Prepare</strong>
-            <p>Find your comfortable spot.</p>
-          </div>
-        </div>
-        <div class="rstep">
-          <span class="rstep-num">02</span>
-          <div>
-            <strong>Relax</strong>
-            <p>Close your eyes. Let the device work for 10–15 minutes.</p>
-          </div>
-        </div>
-        <div class="rstep">
-          <span class="rstep-num">03</span>
-          <div>
-            <strong>Restore</strong>
-            <p>Feel renewed. Continue your evening.</p>
-          </div>
-        </div>
+        <div class="rstep"><span class="rstep-num">01</span><div><strong>Prepare</strong><p>Find your comfortable spot.</p></div></div>
+        <div class="rstep"><span class="rstep-num">02</span><div><strong>Relax</strong><p>Close your eyes. Let the device work for 10–15 minutes.</p></div></div>
+        <div class="rstep"><span class="rstep-num">03</span><div><strong>Restore</strong><p>Feel renewed. Continue your evening.</p></div></div>
       </div>
     </div>
   </div>

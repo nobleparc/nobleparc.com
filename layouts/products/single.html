@@ -7,11 +7,9 @@
   <section class="p-hero">
     <picture>
       {{ if eq $slug "massager" }}
-      <source srcset="/images/massager-hero-real-480w.webp 480w, /images/massager-hero-real-768w.webp 768w, /images/massager-hero-real-1200w.webp 1200w" sizes="100vw" type="image/webp">
-      <img src="/images/massager-hero-real-1200w.webp" alt="{{ .Params.image_alt }}" width="1200" height="900" fetchpriority="high" class="p-hero-bg">
+      <img src="/images/massager-product-1.jpg" alt="{{ .Params.image_alt }}" width="1600" height="1600" fetchpriority="high" class="p-hero-bg">
       {{ else }}
-      <source srcset="/images/mask-hero-real-480w.webp 480w, /images/mask-hero-real-768w.webp 768w, /images/mask-hero-real-1200w.webp 1200w" sizes="100vw" type="image/webp">
-      <img src="/images/mask-hero-real-1200w.webp" alt="{{ .Params.image_alt }}" width="1200" height="900" fetchpriority="high" class="p-hero-bg">
+      <img src="/images/mask-product-3.jpg" alt="{{ .Params.image_alt }}" width="1000" height="1000" fetchpriority="high" class="p-hero-bg">
       {{ end }}
     </picture>
     <div class="p-hero-overlay">
@@ -32,15 +30,11 @@
   <!-- CHAPTER 2: THE STORY -->
   <section class="p-chapter" id="p-story">
     <div class="chapter-media">
-      <picture>
-        {{ if eq $slug "massager" }}
-        <source srcset="/images/massager-hero-real-480w.webp 480w, /images/massager-hero-real-768w.webp 768w, /images/massager-hero-real-1200w.webp 1200w" sizes="100vw" type="image/webp">
-        <img src="/images/massager-hero-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-        {{ else }}
-        <source srcset="/images/mask-hero-real-480w.webp 480w, /images/mask-hero-real-768w.webp 768w, /images/mask-hero-real-1200w.webp 1200w" sizes="100vw" type="image/webp">
-        <img src="/images/mask-hero-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-        {{ end }}
-      </picture>
+      {{ if eq $slug "massager" }}
+      <img src="/images/massager-product-1.jpg" alt="{{ .Title }}" width="1600" height="1600" loading="lazy">
+      {{ else }}
+      <img src="/images/mask-product-3.jpg" alt="{{ .Title }}" width="1000" height="1000" loading="lazy">
+      {{ end }}
     </div>
     <div class="chapter-text">
       <span class="chapter-label">The Story</span>
@@ -61,7 +55,7 @@
     </div>
     <div class="ritual-cinematic">
       <div class="ritual-scene">
-        {{ if eq $slug "massager" }}<img src="/images/massager-hero-real-768w.webp" alt="{{ .Title }} — prepare" width="768" height="576" loading="lazy">{{ else }}<img src="/images/mask-hero-real-768w.webp" alt="{{ .Title }} — prepare" width="768" height="576" loading="lazy">{{ end }}
+        {{ if eq $slug "massager" }}<img src="/images/massager-product-1.jpg" alt="{{ .Title }} — prepare" width="1600" height="1600" loading="lazy">{{ else }}<img src="/images/mask-product-3.jpg" alt="{{ .Title }} — prepare" width="1000" height="1000" loading="lazy">{{ end }}
         <div class="ritual-caption">
           <span class="ritual-num">01</span>
           <h3>Prepare</h3>
@@ -69,7 +63,7 @@
         </div>
       </div>
       <div class="ritual-scene">
-        {{ if eq $slug "massager" }}<img src="/images/massager-angle-real-768w.webp" alt="{{ .Title }} — relax" width="768" height="576" loading="lazy">{{ else }}<img src="/images/mask-angle-real-768w.webp" alt="{{ .Title }} — relax" width="768" height="576" loading="lazy">{{ end }}
+        {{ if eq $slug "massager" }}<img src="/images/massager-product-4.jpg" alt="{{ .Title }} — relax" width="1600" height="1600" loading="lazy">{{ else }}<img src="/images/mask-product-8.jpg" alt="{{ .Title }} — relax" width="1000" height="1000" loading="lazy">{{ end }}
         <div class="ritual-caption">
           <span class="ritual-num">02</span>
           <h3>Relax</h3>
@@ -77,7 +71,7 @@
         </div>
       </div>
       <div class="ritual-scene">
-        {{ if eq $slug "massager" }}<img src="/images/massager-hero-real-768w.webp" alt="{{ .Title }} — restore" width="768" height="576" loading="lazy">{{ else }}<img src="/images/mask-hero-real-768w.webp" alt="{{ .Title }} — restore" width="768" height="576" loading="lazy">{{ end }}
+        {{ if eq $slug "massager" }}<img src="/images/massager-product-1.jpg" alt="{{ .Title }} — restore" width="1600" height="1600" loading="lazy">{{ else }}<img src="/images/mask-product-3.jpg" alt="{{ .Title }} — restore" width="1000" height="1000" loading="lazy">{{ end }}
         <div class="ritual-caption">
           <span class="ritual-num">03</span>
           <h3>Restore</h3>
@@ -90,15 +84,11 @@
   <!-- CHAPTER 4: PURCHASE -->
   <section class="p-chapter chapter-purchase" id="p-purchase">
     <div class="chapter-media">
-      <picture>
-        {{ if eq $slug "massager" }}
-        <source srcset="/images/massager-hero-real-480w.webp 480w, /images/massager-hero-real-768w.webp 768w, /images/massager-hero-real-1200w.webp 1200w" sizes="100vw" type="image/webp">
-        <img src="/images/massager-hero-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-        {{ else }}
-        <source srcset="/images/mask-purchase-real-480w.webp 480w, /images/mask-purchase-real-768w.webp 768w, /images/mask-purchase-real-1200w.webp 1200w" sizes="100vw" type="image/webp">
-        <img src="/images/mask-purchase-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-        {{ end }}
-      </picture>
+      {{ if eq $slug "massager" }}
+      <img src="/images/massager-product-1.jpg" alt="{{ .Title }}" width="1600" height="1600" loading="lazy">
+      {{ else }}
+      <img src="/images/mask-product-6.jpg" alt="{{ .Title }}" width="1000" height="1000" loading="lazy">
+      {{ end }}
     </div>
     <div class="chapter-text chapter-cta-text">
       <span class="chapter-label">Begin Your Ritual</span>
@@ -134,15 +124,11 @@
   <!-- CHAPTER 5: THE DETAILS -->
   <section class="p-chapter chapter-details">
     <div class="chapter-media">
-      <picture>
-        {{ if eq $slug "massager" }}
-        <source srcset="/images/massager-detail-real-480w.webp 480w, /images/massager-detail-real-768w.webp 768w, /images/massager-detail-real-1200w.webp 1200w" sizes="100vw" type="image/webp">
-        <img src="/images/massager-detail-real-1200w.webp" alt="{{ .Title }} — detail view" width="1200" height="900" loading="lazy">
-        {{ else }}
-        <source srcset="/images/mask-detail-real-480w.webp 480w, /images/mask-detail-real-768w.webp 768w, /images/mask-detail-real-1200w.webp 1200w" sizes="100vw" type="image/webp">
-        <img src="/images/mask-detail-real-1200w.webp" alt="{{ .Title }} — detail view" width="1200" height="900" loading="lazy">
-        {{ end }}
-      </picture>
+      {{ if eq $slug "massager" }}
+      <img src="/images/massager-product-3.jpg" alt="{{ .Title }} — detail view" width="1600" height="1600" loading="lazy">
+      {{ else }}
+      <img src="/images/mask-product-4.jpg" alt="{{ .Title }} — detail view" width="1000" height="1000" loading="lazy">
+      {{ end }}
     </div>
     <div class="chapter-text">
       <span class="chapter-label">The Details</span>
@@ -162,15 +148,11 @@
   <!-- CHAPTER 6: WHAT'S IN THE BOX -->
   <section class="p-chapter chapter-box">
     <div class="chapter-media">
-      <picture>
-        {{ if eq $slug "massager" }}
-        <source srcset="/images/massager-angle-real-480w.webp 480w, /images/massager-angle-real-768w.webp 768w, /images/massager-angle-real-1200w.webp 1200w" sizes="100vw" type="image/webp">
-        <img src="/images/massager-angle-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-        {{ else }}
-        <source srcset="/images/mask-angle-real-480w.webp 480w, /images/mask-angle-real-768w.webp 768w, /images/mask-angle-real-1200w.webp 1200w" sizes="100vw" type="image/webp">
-        <img src="/images/mask-angle-real-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">
-        {{ end }}
-      </picture>
+      {{ if eq $slug "massager" }}
+      <img src="/images/massager-product-2.jpg" alt="{{ .Title }}" width="1600" height="1600" loading="lazy">
+      {{ else }}
+      <img src="/images/mask-product-7.jpg" alt="{{ .Title }}" width="1000" height="1000" loading="lazy">
+      {{ end }}
     </div>
     <div class="chapter-text">
       <span class="chapter-label">What's Included</span>
