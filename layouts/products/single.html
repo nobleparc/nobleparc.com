@@ -1,6 +1,5 @@
 {{ define "main" }}
-{{ $faq := .Params.faq_items }}
-{{ $slug := .Params.slug }}
+{{ $faq := .Params.faq_items }}{{ $slug := .Params.slug }}
 <article class="product-cinematic">
 
   <section class="p-hero">
@@ -21,16 +20,8 @@
     <div class="chapter-text">
       <span class="chapter-label">The Story</span>
       <h2>{{ if eq $slug "mask" }}Your Skin's Daily Recharge{{ else }}Tension, Undone{{ end }}</h2>
-      <p>{{ if eq $slug "mask" }}
-        Red light therapy is not a luxury — it is a practice. The same technology trusted by dermatologists and wellness professionals for over two decades is now available in a device that fits into your life. No appointments. No commute. No premium markups.
-        {{ else }}
-        Stress lives in the body — in the shoulders, the neck, the scalp. The Nobleparc Electric Scalp Massager is designed to meet it there, with eight rotating nodes that deliver a deep-kneading massage calibrated to melt away the day's tension.
-        {{ end }}</p>
-      <p>{{ if eq $slug "mask" }}
-        The mask connects to a compact cylindrical controller via a discreet cable, offering three timed sessions (10, 15, or 20 minutes) with automatic shut-off. The controller houses the rechargeable battery and intensity settings, while the silicone mask itself remains lightweight and hands-free — designed to be worn while reading, stretching, or simply lying still.
-        {{ else }}
-        With three adjustable intensity levels and an IPX6 water-resistant body, it is equally at home on your bathroom counter or your desk. Use it on dry hair or in the shower — the choice is yours. The ergonomic handle fits naturally in your hand, and the USB-C rechargeable battery delivers over six hours of use per charge.
-        {{ end }}</p>
+      <p>{{ if eq $slug "mask" }}Red light therapy is not a luxury — it is a practice. The same technology trusted by dermatologists and wellness professionals for over two decades is now available in a device that fits into your life. No appointments. No commute. No premium markups.{{ else }}Stress lives in the body — in the shoulders, the neck, the scalp. The Nobleparc Electric Scalp Massager is designed to meet it there, with eight rotating nodes that deliver a deep-kneading massage calibrated to melt away the day's tension.{{ end }}</p>
+      <p>{{ if eq $slug "mask" }}The mask connects to a compact cylindrical controller via a discreet cable, offering three timed sessions (10, 15, or 20 minutes) with automatic shut-off.{{ else }}With three adjustable intensity levels and an IPX6 water-resistant body, it is equally at home on your bathroom counter or your desk. The ergonomic handle fits naturally in your hand, and the USB-C rechargeable battery delivers over six hours of use per charge.{{ end }}</p>
     </div>
   </section>
 
@@ -39,15 +30,15 @@
     <div class="ritual-cinematic">
       <div class="ritual-scene">
         {{ if eq $slug "massager" }}<img src="/images/massager-hero-768w.webp" alt="{{ .Title }} — prepare" width="768" height="576" loading="lazy">{{ else }}<img src="/images/mask-hero-768w.webp" alt="{{ .Title }} — prepare" width="768" height="576" loading="lazy">{{ end }}
-        <div class="ritual-caption"><span class="ritual-num">01</span><h3>Prepare</h3><p>Begin with clean, dry skin. Find your spot — the corner of the sofa, the edge of the bed, your favorite chair. Light a candle, or simply sit in silence.</p></div>
+        <div class="ritual-caption"><span class="ritual-num">01</span><h3>Prepare</h3><p>Begin with clean, dry skin. Find your spot — the corner of the sofa, the edge of the bed, your favorite chair.</p></div>
       </div>
       <div class="ritual-scene">
         {{ if eq $slug "massager" }}<img src="/images/massager-angle-768w.webp" alt="{{ .Title }} — relax" width="768" height="576" loading="lazy">{{ else }}<img src="/images/mask-angle-768w.webp" alt="{{ .Title }} — relax" width="768" height="576" loading="lazy">{{ end }}
-        <div class="ritual-caption"><span class="ritual-num">02</span><h3>Relax</h3><p>{{ if eq $slug "mask" }}Place the mask on your face and press start. Close your eyes. Breathe. Let the warmth settle over you like a quiet evening.{{ else }}Choose your intensity level. Close your eyes. Let the kneading nodes work their way through the accumulated tension of the day.{{ end }}</p></div>
+        <div class="ritual-caption"><span class="ritual-num">02</span><h3>Relax</h3><p>{{ if eq $slug "mask" }}Place the mask on your face and press start. Close your eyes. Breathe. Let the warmth settle over you.{{ else }}Choose your intensity level. Close your eyes. Let the nodes work through the accumulated tension.{{ end }}</p></div>
       </div>
       <div class="ritual-scene">
         {{ if eq $slug "massager" }}<img src="/images/massager-hero-768w.webp" alt="{{ .Title }} — restore" width="768" height="576" loading="lazy">{{ else }}<img src="/images/mask-hero-768w.webp" alt="{{ .Title }} — restore" width="768" height="576" loading="lazy">{{ end }}
-        <div class="ritual-caption"><span class="ritual-num">03</span><h3>Restore</h3><p>{{ if eq $slug "mask" }}The mask shuts off automatically when your session ends. Remove it, continue with your evening, and sleep well knowing your skin has had its moment of care.{{ else }}After 10–15 minutes, rinse and store. Your scalp feels lighter, your mind clearer, your evening just beginning.{{ end }}</p></div>
+        <div class="ritual-caption"><span class="ritual-num">03</span><h3>Restore</h3><p>{{ if eq $slug "mask" }}The mask shuts off automatically. Remove it, continue with your evening, and sleep well.{{ else }}After 10–15 minutes, rinse and store. Your scalp feels renewed, your mind clearer.{{ end }}</p></div>
       </div>
     </div>
   </section>
@@ -55,22 +46,16 @@
   <section class="p-chapter chapter-purchase" id="p-purchase">
     <div class="chapter-media">{{ if eq $slug "massager" }}<img src="/images/massager-hero-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">{{ else }}<img src="/images/mask-purchase-1200w.webp" alt="{{ .Title }}" width="1200" height="900" loading="lazy">{{ end }}</div>
     <div class="chapter-text chapter-cta-text">
-      <span class="chapter-label">Begin Your Ritual</span>
-      <h2>{{ .Title }}</h2>
+      <span class="chapter-label">Begin Your Ritual</span><h2>{{ .Title }}</h2>
       <p class="purchase-price">${{ .Params.price }}</p>
       <p class="purchase-desc">{{ .Params.short_desc }}</p>
       <div class="purchase-seals"><span>Free US Shipping</span><span>30-Day Guarantee</span><span>2-Year Warranty</span></div>
       {{ if .Site.Params.paypalEmail }}
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form-inline">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="{{ .Site.Params.paypalEmail }}">
-        <input type="hidden" name="item_name" value="{{ .Title }}">
-        <input type="hidden" name="amount" value="{{ printf "%.2f" (float .Params.price) }}">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="hidden" name="no_shipping" value="2">
-        <input type="hidden" name="return" value="https://nobleparc.com/confirmation/">
-        <input type="hidden" name="cancel_return" value="https://nobleparc.com/">
-        <input type="hidden" name="lc" value="US">
+        <input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="{{ .Site.Params.paypalEmail }}">
+        <input type="hidden" name="item_name" value="{{ .Title }}"><input type="hidden" name="amount" value="{{ printf "%.2f" (float .Params.price) }}">
+        <input type="hidden" name="currency_code" value="USD"><input type="hidden" name="no_shipping" value="2">
+        <input type="hidden" name="return" value="https://nobleparc.com/confirmation/"><input type="hidden" name="cancel_return" value="https://nobleparc.com/"><input type="hidden" name="lc" value="US">
         <button type="submit" class="btn btn-primary btn-purchase"><span class="btn-purchase-label">Begin Your Ritual</span> <span class="btn-purchase-price">${{ .Params.price }}</span></button>
       </form>
       {{ end }}
@@ -79,9 +64,9 @@
   </section>
 
   <section class="p-chapter chapter-details">
-    <div class="chapter-media">{{ if eq $slug "massager" }}<img src="/images/massager-detail-1200w.webp" alt="{{ .Title }} — detail view" width="1200" height="900" loading="lazy">{{ else }}<img src="/images/mask-detail-1200w.webp" alt="{{ .Title }} — detail view" width="1200" height="900" loading="lazy">{{ end }}</div>
+    <div class="chapter-media">{{ if eq $slug "massager" }}<img src="/images/massager-detail-1200w.webp" alt="{{ .Title }} — technical" width="1200" height="900" loading="lazy">{{ else }}<img src="/images/mask-detail-1200w.webp" alt="{{ .Title }} — technical" width="1200" height="900" loading="lazy">{{ end }}</div>
     <div class="chapter-text">
-      <span class="chapter-label">The Details</span>
+      <span class="chapter-label">Technical Specifications</span>
       <h2>Carefully Engineered</h2>
       <p>A closer look at what makes this device different.</p>
       <div class="specs-panel">{{ range .Params.specs }}<div class="spec-row"><span class="spec-label">{{ .label }}</span><span class="spec-value">{{ .value }}</span></div>{{ end }}</div>
@@ -100,8 +85,7 @@
   {{ if $faq }}
   <section class="p-chapter chapter-faq" itemscope itemtype="https://schema.org/FAQPage">
     <div class="chapter-text">
-      <span class="chapter-label">FAQ</span>
-      <h2>Frequently Asked Questions</h2>
+      <span class="chapter-label">FAQ</span><h2>Frequently Asked Questions</h2>
       <div class="faq-chapter-list">{{ range $faq }}<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><button class="faq-question" aria-expanded="false" itemprop="name">{{ .question }}</button><div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">{{ .answer | safeHTML }}</div></div></div>{{ end }}</div>
     </div>
   </section>

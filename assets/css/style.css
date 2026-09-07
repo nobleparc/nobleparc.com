@@ -98,7 +98,7 @@ p{margin-bottom:12px;line-height:1.7}
 .showcase-eyebrow{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
 .showcase-sub{color:var(--gray-500);font-size:var(--fs-md);max-width:540px;margin:0 auto}
 .showcase-grid{display:grid;gap:48px}
-.showcase-item{display:grid;gap:20px}
+.showcase-card{display:grid;gap:20px}
 .showcase-visual{width:100%}
 .showcase-visual img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .showcase-info{display:flex;flex-direction:column;gap:4px}
@@ -253,7 +253,7 @@ p{margin-bottom:12px;line-height:1.7}
 @media(min-width:768px){
   .showcase{padding:80px 0}
   .showcase-grid{grid-template-columns:1fr 1fr;gap:40px}
-  .showcase-item{grid-template-rows:auto 1fr}
+  .showcase-card{grid-template-rows:auto 1fr}
   .values-cloud-inner{padding:0 40px}
   .values-list{flex-direction:row;gap:32px;justify-content:center}
   .ritual-preview{padding:80px 0}
